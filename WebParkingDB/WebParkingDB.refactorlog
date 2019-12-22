@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="89696d7e-9fb8-4ab4-b96f-1abba50d4c2a" ChangeDateTime="12/22/2019 10:01:01">
+    <Property Name="ElementName" Value="[dbo].[FK_Parking_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Parking]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Parking_ParkingTypes]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5dfdd46e-2731-4fce-81a7-479f8f2f993d" ChangeDateTime="12/22/2019 10:21:20">
+    <Property Name="ElementName" Value="[dbo].[FK_Parking_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Parking]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Parking_Client]" />
+  </Operation>
+</Operations>
