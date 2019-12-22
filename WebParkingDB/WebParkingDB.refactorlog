@@ -14,4 +14,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_Parking_Client]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="0cfbc820-f51d-474c-9489-a3c424a87a35" ChangeDateTime="12/22/2019 12:01:55">
+    <Property Name="ElementName" Value="[dbo].[FK_Bookings_Parking]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Bookings_Parkings]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6c17a7ca-32c1-46cf-b0a0-f34fbc72fa11" ChangeDateTime="12/22/2019 12:06:21">
+    <Property Name="ElementName" Value="[dbo].[FK_Bookings_Client]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Bookings_Clients]" />
+  </Operation>
 </Operations>

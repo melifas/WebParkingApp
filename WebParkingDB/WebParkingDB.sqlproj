@@ -61,11 +61,14 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\ParkingTypes.sql" />
-    <Build Include="dbo\Tables\Parking.sql" />
-    <Build Include="dbo\Tables\Client.sql" />
+    <Build Include="dbo\Tables\Parkings.sql" />
+    <Build Include="dbo\Tables\Clients.sql" />
     <Build Include="dbo\Tables\Bookings.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="WebParkingDB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WebParkingDB.publish.xml" />
   </ItemGroup>
 </Project>
