@@ -148,5 +148,18 @@ namespace LibraryWebParking.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spgetparkings_Result>("spgetparkings", startDateParameter, endDateParameter);
         }
+    
+        public virtual ObjectResult<spInsertClient_Result> spInsertClient(string firstName, string lastName)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("lastName", lastName) :
+                new ObjectParameter("lastName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInsertClient_Result>("spInsertClient", firstNameParameter, lastNameParameter);
+        }
     }
 }
