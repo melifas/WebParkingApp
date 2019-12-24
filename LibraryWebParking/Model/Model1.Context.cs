@@ -161,5 +161,35 @@ namespace LibraryWebParking.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInsertClient_Result>("spInsertClient", firstNameParameter, lastNameParameter);
         }
+    
+        public virtual ObjectResult<spGetAvailableParkingPositions_Result> spGetAvailableParkingPositions(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<int> roomTypeID)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            var roomTypeIDParameter = roomTypeID.HasValue ?
+                new ObjectParameter("roomTypeID", roomTypeID) :
+                new ObjectParameter("roomTypeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAvailableParkingPositions_Result>("spGetAvailableParkingPositions", startDateParameter, endDateParameter, roomTypeIDParameter);
+        }
+    
+        public virtual ObjectResult<spgetAvailableparkingsType_Result> spgetAvailableparkingsType(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spgetAvailableparkingsType_Result>("spgetAvailableparkingsType", startDateParameter, endDateParameter);
+        }
     }
 }

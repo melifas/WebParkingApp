@@ -90,7 +90,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -121,7 +120,12 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="spgetparkings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="spGetAvailableParkingPositions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+          <Parameter Name="roomTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spgetAvailableparkingsType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="startDate" Type="date" Mode="In" />
           <Parameter Name="endDate" Type="date" Mode="In" />
         </Function>
@@ -299,6 +303,15 @@
             <Parameter Name="firstName" Mode="In" Type="String" />
             <Parameter Name="lastName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="spGetAvailableParkingPositions" ReturnType="Collection(WebParkingDBModel.spGetAvailableParkingPositions_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="roomTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spgetAvailableparkingsType" ReturnType="Collection(WebParkingDBModel.spgetAvailableparkingsType_Result)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -323,6 +336,17 @@
           <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Phone" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetAvailableParkingPositions_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ParkingTypeId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spgetAvailableparkingsType_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Desription" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -408,16 +432,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WebParkingDBModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WebParkingDBModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="spgetparkings" FunctionName="WebParkingDBModel.Store.spgetparkings">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebParkingDBModel.spgetparkings_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Desription" ColumnName="Desription" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spInsertClient" FunctionName="WebParkingDBModel.Store.spInsertClient">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebParkingDBModel.spInsertClient_Result">
@@ -426,6 +440,25 @@
                 <ScalarProperty Name="LatName" ColumnName="LatName" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAvailableParkingPositions" FunctionName="WebParkingDBModel.Store.spGetAvailableParkingPositions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spGetAvailableParkingPositions_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
+                <ScalarProperty Name="ParkingTypeId" ColumnName="ParkingTypeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spgetAvailableparkingsType" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spgetAvailableparkingsType_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Desription" ColumnName="Desription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
