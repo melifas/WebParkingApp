@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryWebParking.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,5 +27,27 @@ namespace WebParkingMVC.Controllers
 
             return View();
         }
+
+        public ActionResult AvailableParkingTypes()
+        {
+            Data_Access da = new Data_Access();
+            //da.AvailableParkings
+
+            return View();
+        }
+
+       /* public ActionResult AvailiableParkings()
+        {
+            List<sp_getparkings_Result> result = null;
+
+            using (WebParkingDBEntities db = new WebParkingDBEntities())
+            {
+                result = db.sp_getparkings(new DateTime(2019, 12, 20), new DateTime(2019, 12, 23)).ToList();
+            }
+
+            return View(result);
+        }*/
+
+
     }
 }
