@@ -29,5 +29,9 @@ namespace WebParkingMVC.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<LibraryWebParking.Model.Parkings> Parkings { get; set; }
+
+        public System.Data.Entity.DbSet<LibraryWebParking.Model.ParkingTypes> ParkingTypes { get; set; }
     }
 }

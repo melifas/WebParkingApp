@@ -9,6 +9,26 @@ namespace LibraryWebParking.Repository
 {
     public class Data_Access
     {
+
+        public List<Parkings> getParkings() 
+        {      
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                var parkings= db.Parkings.ToList();
+                return parkings;
+            }
+        }
+
+        public List<ParkingTypes> getParkingsType()
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                var parkingsType = db.ParkingTypes.ToList();
+                return parkingsType;
+            }
+        }
+
+
         public List<spgetparkings_Result> AvailableParkings(DateTime startDate, DateTime endDate)
         {
             List<spgetparkings_Result> results = null;

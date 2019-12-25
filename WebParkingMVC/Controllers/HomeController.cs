@@ -31,23 +31,21 @@ namespace WebParkingMVC.Controllers
         public ActionResult AvailableParkingTypes()
         {
             Data_Access da = new Data_Access();
-            //da.AvailableParkings
+            var avalilable = da.getParkingsType();
 
-            return View();
+            return View(avalilable);
         }
 
-       /* public ActionResult AvailiableParkings()
+
+        [HttpPost]
+        public ActionResult AvailableParkingTypes(DateTime startDate, DateTime endDate)
         {
-            List<sp_getparkings_Result> result = null;
+            Data_Access da = new Data_Access();
 
-            using (WebParkingDBEntities db = new WebParkingDBEntities())
-            {
-                result = db.sp_getparkings(new DateTime(2019, 12, 20), new DateTime(2019, 12, 23)).ToList();
-            }
+            return View(da.AvailableParkings(startDate, endDate));
+        }
 
-            return View(result);
-        }*/
-
+        
 
     }
 }
