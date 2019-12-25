@@ -1,4 +1,5 @@
-﻿using LibraryWebParking.Repository;
+﻿using LibraryWebParking.Model;
+using LibraryWebParking.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

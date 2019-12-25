@@ -4,18 +4,14 @@
     ViewBag.Title = "AvailableParkingTypes";
 }
 
+<h2>AvailableParkingTypes</h2>
+
 @using (Html.BeginForm("AvailableParkingTypes", "Home", FormMethod.Post))
 {
-
-    <h2>AvailableParkingTypes</h2>
-
-    <input type="date" name="startDate" />
-    <input type="date" name="endDate" />
+    <input type="date" name="startDate" value="" />
+    <input type="date" name="endDate" value="" />
     <input type="submit" value="Get Rooms" />
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
         <tr>
             <th>
@@ -43,7 +39,6 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.ActionLink("Book Now", "Edit", new { id = item.Id }) |                   
                 </td>
             </tr>
         }

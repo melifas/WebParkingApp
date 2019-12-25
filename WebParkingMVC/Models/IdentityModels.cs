@@ -33,5 +33,7 @@ namespace WebParkingMVC.Models
         public System.Data.Entity.DbSet<LibraryWebParking.Model.Parkings> Parkings { get; set; }
 
         public System.Data.Entity.DbSet<LibraryWebParking.Model.ParkingTypes> ParkingTypes { get; set; }
+
+        public System.Data.Entity.DbSet<LibraryWebParking.Model.spgetAvailableparkingsType_Result> spgetAvailableparkingsType_Result { get; set; }
     }
 }

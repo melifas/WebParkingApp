@@ -35,9 +35,11 @@ namespace LibraryWebParking.Repository
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-               return results = db.spgetparkings(startDate, endDate).ToList();
+                results = db.spgetparkings(startDate, endDate).ToList();
+                return results;
             }
         }
+
 
         public void BookClient(string firstName,string lastName, DateTime startDate, DateTime endDate,int ParkingTypeId) 
         {

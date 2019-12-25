@@ -120,6 +120,13 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spBookingInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clientId" Type="int" Mode="In" />
+          <Parameter Name="parkingId" Type="int" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+          <Parameter Name="endDate" Type="date" Mode="In" />
+          <Parameter Name="totalCost" Type="money" Mode="In" />
+        </Function>
         <Function Name="spGetAvailableParkingPositions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="startDate" Type="date" Mode="In" />
           <Parameter Name="endDate" Type="date" Mode="In" />
@@ -308,9 +315,16 @@
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
             <Parameter Name="roomTypeID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spgetAvailableparkingsType" ReturnType="Collection(WebParkingDBModel.spgetAvailableparkingsType_Result)">
+          <FunctionImport Name="spgetAvailableparkingsType" EntitySet="ParkingTypes" ReturnType="Collection(WebParkingDBModel.ParkingTypes)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spBookingInsert">
+            <Parameter Name="clientId" Mode="In" Type="Int32" />
+            <Parameter Name="parkingId" Mode="In" Type="Int32" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+            <Parameter Name="totalCost" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -453,8 +467,11 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spgetAvailableparkingsType" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBookingInsert" FunctionName="WebParkingDBModel.Store.spBookingInsert" />
+          <FunctionImportMapping FunctionImportName="spgetparkings" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="WebParkingDBModel.spgetAvailableparkingsType_Result">
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spgetparkings_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Desription" ColumnName="Desription" />
