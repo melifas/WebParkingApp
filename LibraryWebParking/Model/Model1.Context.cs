@@ -229,7 +229,5 @@ namespace LibraryWebParking.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBookingInsert", clientIdParameter, parkingIdParameter, startDateParameter, endDateParameter, totalCostParameter);
         }
-
-       
     }
 }

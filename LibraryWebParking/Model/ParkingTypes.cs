@@ -27,10 +27,5 @@ namespace LibraryWebParking.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parkings> Parkings { get; set; }
-
-        public static explicit operator ParkingTypes(List<spgetparkings_Result> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

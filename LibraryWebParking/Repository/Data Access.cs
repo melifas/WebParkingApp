@@ -23,7 +23,7 @@ namespace LibraryWebParking.Repository
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                var parkingsType = db.ParkingTypes.ToList();
+                List<ParkingTypes> parkingsType = db.ParkingTypes.ToList();
                 return parkingsType;
             }
         }
