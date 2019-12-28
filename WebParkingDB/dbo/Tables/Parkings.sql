@@ -1,11 +1,9 @@
-﻿CREATE TABLE [dbo].[Parkings]
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [ParkingNumber] NVARCHAR(50) NOT NULL, 
-    [ParkingTypeId] INT NOT NULL, 
-    [ClientId] INT NOT NULL, 
-    [BookingId] INT NOT NULL, 
-    CONSTRAINT [FK_Parking_ParkingTypes] FOREIGN KEY (ParkingTypeId) REFERENCES ParkingTypes(Id), 
-    CONSTRAINT [FK_Parking_Bookings] FOREIGN KEY (BookingId) REFERENCES Bookings(Id), 
-    CONSTRAINT [FK_Parking_Clients] FOREIGN KEY (ClientId) REFERENCES Clients(Id) 
-)
+﻿CREATE TABLE [dbo].[Parkings] (
+    [Id]            INT           IDENTITY (1, 1) NOT NULL,
+    [ParkingNumber] NVARCHAR (50) NOT NULL,
+    [ParkingTypeId] INT           NOT NULL,
+    CONSTRAINT [PK_Parkings] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Parkings_ParkingTypes] FOREIGN KEY ([ParkingTypeId]) REFERENCES [dbo].[ParkingTypes] ([Id])
+);
+
+

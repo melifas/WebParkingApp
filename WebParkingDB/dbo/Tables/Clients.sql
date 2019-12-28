@@ -1,10 +1,10 @@
-﻿CREATE TABLE [dbo].[Clients]
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [FirstName] NVARCHAR(50) NOT NULL, 
-    [LastName] NVARCHAR(50) NOT NULL, 
-    [Phone] INT NOT NULL, 
-    [Email] NVARCHAR(50) NOT NULL, 
-    [BookingId] INT NOT NULL, 
-    CONSTRAINT [FK_Client_Bookings] FOREIGN KEY (BookingId) REFERENCES Bookings(Id)
-)
+﻿CREATE TABLE [dbo].[Clients] (
+    [Id]        INT           IDENTITY (1, 1) NOT NULL,
+    [FirstName] NVARCHAR (50) NOT NULL,
+    [LatName]   NVARCHAR (50) NOT NULL,
+    [Phone]     INT           NOT NULL,
+    [Email]     NVARCHAR (50) NOT NULL,
+    CONSTRAINT [PK_Clients] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+

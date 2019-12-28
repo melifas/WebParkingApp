@@ -326,6 +326,10 @@
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
             <Parameter Name="totalCost" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="pt" EntitySet="ParkingTypes" ReturnType="Collection(WebParkingDBModel.ParkingTypes)">
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+            <Parameter Name="endDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -479,6 +483,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pt" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

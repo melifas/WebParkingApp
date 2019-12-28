@@ -58,12 +58,17 @@
     <Folder Include="Properties" />
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\ParkingTypes.sql" />
     <Build Include="dbo\Tables\Parkings.sql" />
     <Build Include="dbo\Tables\Clients.sql" />
     <Build Include="dbo\Tables\Bookings.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertClient.sql" />
+    <Build Include="dbo\Stored Procedures\spgetAvailableparkingsType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAvailableParkingPositions.sql" />
+    <Build Include="dbo\Stored Procedures\spBookingInsert.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="WebParkingDB.refactorlog" />
