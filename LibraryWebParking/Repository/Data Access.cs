@@ -29,18 +29,29 @@ namespace LibraryWebParking.Repository
         }
 
 
-        public List<spgetparkings_Result> AvailableParkings(DateTime startDate, DateTime endDate)
+       /* public List<spgetparkings_Result> AvailableParkings(DateTime startDate, DateTime endDate)
         {
             List<spgetparkings_Result> results = null;
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                results = db.spgetparkings(startDate, endDate).ToList();
+                results = db.spgetAvailableparkingsType(startDate, endDate).ToList();
+                return results;
+            }
+        }*/
+
+        public List<ParkingTypes> AvailableParkings(DateTime startDate, DateTime endDate)
+        {
+            List<ParkingTypes> results = null;
+
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                results = db.spgetAvailableparkingsType(startDate, endDate).ToList();
                 return results;
             }
         }
 
-        
+
 
         public void BookClient(string firstName,string lastName, DateTime startDate, DateTime endDate,int ParkingTypeId) 
         {
