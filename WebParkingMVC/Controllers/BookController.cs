@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebParkingMVC.Models;
 
 namespace WebParkingMVC.Controllers
 {
@@ -20,18 +21,24 @@ namespace WebParkingMVC.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        // GET: Book
-        public ActionResult BookRoom(string firstName, string lastName, DateTime startDate, DateTime endDate, int ParkingTypeId)
+        /*[HttpPost]*/
+        /*[ValidateAntiForgeryToken]*/
+        [Route("Book/CreateBooking/{ParkingTypeId}")]
+        public ActionResult CreateBooking(string firstName, string lastName, DateTime? startDate, DateTime? endDate, int? ParkingTypeId)
         {
-            if (ModelState.IsValid)
+
+            /*BookRoomModel book = new BookRoomModel();
+            book.FirstName = firstName;
+            book.LastName = lastName;
+            book.startDate = startDate;
+            book.endDate = endDate;
+            book.ParkingtypeId = ParkingTypeId;*/
+            /*if (ModelState.IsValid)
             {
                 Data_Access da = new Data_Access();
-                da.BookClient( firstName,  lastName,  startDate,  endDate,  ParkingTypeId);
+                da.BookClient(firstName, lastName, startDate, endDate, ParkingTypeId);
                 return RedirectToAction("Index");
-            }
-
+            }*/
             return View();
            
         }

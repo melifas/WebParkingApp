@@ -6,12 +6,16 @@ using System.Web;
 
 namespace WebParkingMVC.Models
 {
-    public class BookRoom
+    public class BookRoomModel
     {
-        public int BookRoomId { get; set; }
-        [Display(Name ="Your First Name")]
-        [Required(ErrorMessage ="You must give your FirstName")]
+        public int ParkingtypeId { get; set; }
+
+        public DateTime startDate { get; set; }
+       
+        public DateTime endDate { get; set; }
+
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
     }
 }

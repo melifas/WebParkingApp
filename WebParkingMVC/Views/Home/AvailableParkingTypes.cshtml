@@ -26,20 +26,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var parkingType in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => parkingType.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Desription)
+                    @Html.DisplayFor(modelItem => parkingType.Desription)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => parkingType.Price)
                 </td>
                 <td>
-                    @Html.ActionLink("Book", "BookRoom", "Book", new { id = item.Id })
+                    @Html.ActionLink("Book Now", "CreateBooking", "Book",new {ParkingTypeId = parkingType.Id })
 
                 </td>
             </tr>

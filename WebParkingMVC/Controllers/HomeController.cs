@@ -10,6 +10,8 @@ namespace WebParkingMVC.Controllers
 {
     public class HomeController : Controller
     {
+
+        Data_Access da = new Data_Access();
         public ActionResult Index()
         {
             return View();
@@ -31,7 +33,6 @@ namespace WebParkingMVC.Controllers
 
         public ActionResult AvailableParkingTypes()
         {
-            Data_Access da = new Data_Access();
             var avalilable = da.getParkingsType();
 
             return View(avalilable);
@@ -40,9 +41,8 @@ namespace WebParkingMVC.Controllers
 
         [HttpPost]
         public ActionResult AvailableParkingTypes(DateTime startDate, DateTime endDate)
-        {
-            Data_Access da = new Data_Access();
-
+        {          
+            
             return View(da.AvailableParkings(startDate, endDate));
         }
 
