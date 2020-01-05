@@ -24,7 +24,7 @@ namespace WebParkingMVC.Controllers
         /*[HttpPost]*/
         /*[ValidateAntiForgeryToken]*/
         [Route("Book/CreateBooking/{ParkingTypeId}")]
-        public ActionResult CreateBooking(string firstName, string lastName, DateTime? startDate, DateTime? endDate, int? ParkingTypeId)
+        public ActionResult CreateBooking(/*string firstName, string lastName, DateTime? startDate, DateTime? endDate,*/ int ParkingTypeId)
         {
 
             /*BookRoomModel book = new BookRoomModel();
