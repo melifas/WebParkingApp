@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="WebParkingDBModel.Clients" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="WebParkingDBModel.Parkings" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WebParkingDBModel.ParkingTypes" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebParkingDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="WebParkingDBModel.FK_Bookings_Clients" ManuallyRouted="false" />
         <AssociationConnector Association="WebParkingDBModel.FK_Bookings_Parkings" ManuallyRouted="false" />
         <AssociationConnector Association="WebParkingDBModel.FK_Parkings_ParkingTypes" ManuallyRouted="false" />
