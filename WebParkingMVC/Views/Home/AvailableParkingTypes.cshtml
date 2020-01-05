@@ -11,39 +11,37 @@
     <input type="date" name="startDate" value="" />
     <input type="date" name="endDate" value="" />
     <input type="submit" value="Get Rooms" />
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Desription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var parkingType in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => parkingType.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => parkingType.Desription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => parkingType.Price)
-                </td>
-                <td>
-                    @Html.ActionLink("Book Now", "CreateBooking", "Book",new {ParkingTypeId = parkingType.Id })
-
-                </td>
-            </tr>
-        }
-
-    </table>
 }
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var parkingType in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => parkingType.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => parkingType.Desription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => parkingType.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Book Now", "CreateBooking", "Book", new { ParkingTypeId = parkingType.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

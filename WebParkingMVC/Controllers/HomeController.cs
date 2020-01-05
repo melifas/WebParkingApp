@@ -31,15 +31,21 @@ namespace WebParkingMVC.Controllers
             return View();
         }
 
-        public ActionResult AvailableParkingTypes()
-        {
-            var avalilable = da.getParkingsType();
+        /* public ActionResult AvailableParkingTypes()
+         {
+             var avalilable = da.getParkingsType();
 
-            return View(avalilable);
+             return View(avalilable);
+         }*/
+
+
+        public ActionResult SearchAvalilableParkingTypes()
+        {           
+            return View();
         }
 
 
-        [HttpPost]
+        /*[HttpPost]*/
         public ActionResult AvailableParkingTypes(DateTime startDate, DateTime endDate)
         {          
             
