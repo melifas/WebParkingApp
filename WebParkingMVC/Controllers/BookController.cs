@@ -35,24 +35,32 @@ namespace WebParkingMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult BookRoom(BookRoomModel model)
         {
+            /* if (ModelState.IsValid)
+             {
+                 bool status = false;
+                 //bool response = da.SaveBooking(model);
+                 if (status)
+                 {
+                     Response.Redirect("~/");
+                 }
+                 else
+                 {
+                     ModelState.AddModelError("", "Cannot save to database");
+                 }*/
             if (ModelState.IsValid)
             {
-                bool status = false;
-                //bool response = da.SaveBooking(model);
-                if (status)
-                {
-                    Response.Redirect("~/");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cannot save to database");
-                }
+                da.BookClient(model.FirstName, model.LastName, model.startDate, model.endDate, model.ParkingtypeId);
+                return RedirectToAction("Index");
             }
+            return View(model);
 
-            IEnumerable<SelectListItem> ParkingsTypeList = da.getParkingsType().Select(m => new SelectListItem() { Text = m.Title, Value = m.Id.ToString() }).ToArray();
+
+        
+
+       /* IEnumerable<SelectListItem> ParkingsTypeList = da.getParkingsType().Select(m => new SelectListItem() { Text = m.Title, Value = m.Id.ToString() }).ToArray();
             ViewBag.ParkingsTypes = ParkingsTypeList;
 
-            return View(model);
+            return View(model);*/
         }
 
 
