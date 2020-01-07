@@ -10,12 +10,20 @@ namespace WebParkingMVC.Models
     {
         public int ParkingtypeId { get; set; }
 
+        [Required]
+        [Display(Name = "Start Date")]  
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime startDate { get; set; }
-       
+
+        [Required]
+        [Display(Name = "End Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime endDate { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
     }
 }

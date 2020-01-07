@@ -2,14 +2,18 @@
 
 @{
     ViewBag.Title = "AvailableParkingTypes";
+
+    var startDate = ((DateTime)ViewBag.startDate).ToString("yyyy-MM-dd");
+    var endDate = ((DateTime)ViewBag.endDate).ToString("yyyy-MM-dd");
+
 }
 
 <h2>AvailableParkingTypes</h2>
 
 @using (Html.BeginForm("AvailableParkingTypes", "Home", FormMethod.Post))
 {
-    <input type="date" name="startDate" value="" />
-    <input type="date" name="endDate" value="" />
+    <input type="date" name="startDate" value="@startDate" />
+    <input type="date" name="endDate" value="@endDate" />
     <input type="submit" value="Get Rooms" />
 
     <table class="table">
@@ -39,7 +43,7 @@
                     @Html.DisplayFor(modelItem => parkingType.Price)
                 </td>
                 <td>
-                    @Html.ActionLink("Book Now", "CreateBooking", "Book", new { ParkingTypeId = parkingType.Id },null)
+                    @Html.ActionLink("Book Now", "BookRoom", "Book", new { @id = parkingType.Id, @start = startDate, @end = endDate }, null)
 
                 </td>
             </tr>

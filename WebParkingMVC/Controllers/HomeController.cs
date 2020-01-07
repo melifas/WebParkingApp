@@ -39,20 +39,26 @@ namespace WebParkingMVC.Controllers
          }*/
 
 
-        public ActionResult SearchAvalilableParkingTypes()
-        {           
-            return View();
+        public ActionResult AvailableParkingTypes()
+        {
+            ViewBag.startDate = DateTime.Now.Date;
+            ViewBag.endDate = DateTime.Now.Date.AddDays(3);
+            List<ParkingTypes> model = new List<ParkingTypes>();
+
+            return View(model);
         }
 
-
-        /*[HttpPost]*/
+        [HttpPost]
         public ActionResult AvailableParkingTypes(DateTime startDate, DateTime endDate)
-        {          
-            
-            return View(da.AvailableParkings(startDate, endDate));
+        {
+            ViewBag.startDate = startDate;
+            ViewBag.endDate = endDate;
+            List<ParkingTypes> model = da.AvailableParkings(startDate, endDate);
+
+            return View(model);
         }
 
-        
+
 
     }
 }
