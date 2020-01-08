@@ -52,6 +52,28 @@ namespace LibraryWebParking.Repository
         }
 
 
+        public List<spBookingsSearch_Result> SearchBookings(string lastName, DateTime startDate)
+        {
+            List<spBookingsSearch_Result> bookSearchResults = null;
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                bookSearchResults = db.spBookingsSearch(lastName, startDate).ToList();
+                return bookSearchResults;
+            }
+
+        }
+
+
+        public void CheckInClient( int bookingId) 
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {               
+               
+
+            }
+            
+        }
+
 
         public void BookClient(string firstName,string lastName, DateTime startDate, DateTime endDate,int ParkingTypeId) 
         {

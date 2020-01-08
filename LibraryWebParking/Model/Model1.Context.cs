@@ -254,5 +254,27 @@ namespace LibraryWebParking.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ParkingTypes>("pt", mergeOption, startDateParameter, endDateParameter);
         }
+    
+        public virtual ObjectResult<spBookingsSearch_Result> spBookingsSearch(string lastName, Nullable<System.DateTime> startDate)
+        {
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("lastName", lastName) :
+                new ObjectParameter("lastName", typeof(string));
+    
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBookingsSearch_Result>("spBookingsSearch", lastNameParameter, startDateParameter);
+        }
+    
+        public virtual int spBookingsCheckIn(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBookingsCheckIn", idParameter);
+        }
     }
 }

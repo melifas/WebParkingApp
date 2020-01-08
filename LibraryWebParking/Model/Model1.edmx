@@ -87,6 +87,13 @@
           <Parameter Name="endDate" Type="date" Mode="In" />
           <Parameter Name="totalCost" Type="money" Mode="In" />
         </Function>
+        <Function Name="spBookingsCheckIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spBookingsSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="startDate" Type="date" Mode="In" />
+        </Function>
         <Function Name="spGetAvailableParkingPositions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="startDate" Type="date" Mode="In" />
           <Parameter Name="endDate" Type="date" Mode="In" />
@@ -278,6 +285,13 @@
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="spBookingsSearch" ReturnType="Collection(WebParkingDBModel.spBookingsSearch_Result)">
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spBookingsCheckIn">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -310,6 +324,25 @@
         </ComplexType>
         <ComplexType Name="spgetAvailableparkingsType_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Desription" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="spBookingsSearch_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="Int32" Name="ParkingId" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="CheckedIn" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Phone" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id1" Nullable="false" />
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ParkingTypeId" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Desription" Nullable="false" />
           <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
@@ -397,6 +430,30 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="pt" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType" />
+          <FunctionImportMapping FunctionImportName="spBookingsSearch" FunctionName="WebParkingDBModel.Store.spBookingsSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spBookingsSearch_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CheckedIn" ColumnName="CheckedIn" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LatName" ColumnName="LatName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id1" ColumnName="Id1" />
+                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
+                <ScalarProperty Name="ParkingTypeId" ColumnName="ParkingTypeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Desription" ColumnName="Desription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBookingsCheckIn" FunctionName="WebParkingDBModel.Store.spBookingsCheckIn" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
