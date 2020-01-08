@@ -276,5 +276,7 @@ namespace LibraryWebParking.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBookingsCheckIn", idParameter);
         }
+
+        public System.Data.Entity.DbSet<WebParkingMVC.Models.FullBookRoomModel> FullBookRoomModels { get; set; }
     }
 }

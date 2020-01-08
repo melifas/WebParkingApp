@@ -175,6 +175,7 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchBooikingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -386,6 +387,7 @@
     <Content Include="Views\Home\AvailableParkingTypes.cshtml" />
     <Content Include="Views\Book\CreateBooking.cshtml" />
     <Content Include="Views\Home\SearchAvalilableParkingTypes.cshtml" />
+    <Content Include="Views\SearchBooikings\searchBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

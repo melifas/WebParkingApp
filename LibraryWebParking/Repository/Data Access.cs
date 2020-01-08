@@ -67,9 +67,9 @@ namespace LibraryWebParking.Repository
         public void CheckInClient( int bookingId) 
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
-            {               
-               
+            {
 
+                db.spBookingsCheckIn(bookingId);
             }
             
         }

@@ -290,7 +290,7 @@
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="spBookingsCheckIn">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
