@@ -255,17 +255,13 @@ namespace LibraryWebParking.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ParkingTypes>("pt", mergeOption, startDateParameter, endDateParameter);
         }
     
-        public virtual ObjectResult<FullBookRoomModel> spBookingsSearch(string lastName, Nullable<System.DateTime> startDate)
+        public virtual ObjectResult<FullBookRoomModel> spBookingsSearch(string lastName)
         {
             var lastNameParameter = lastName != null ?
                 new ObjectParameter("lastName", lastName) :
                 new ObjectParameter("lastName", typeof(string));
     
-            var startDateParameter = startDate.HasValue ?
-                new ObjectParameter("startDate", startDate) :
-                new ObjectParameter("startDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FullBookRoomModel>("spBookingsSearch", lastNameParameter, startDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FullBookRoomModel>("spBookingsSearch", lastNameParameter);
         }
     
         public virtual int spBookingsCheckIn(Nullable<int> id)

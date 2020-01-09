@@ -13,12 +13,12 @@ namespace WebParkingMVC.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set;}    
         public bool CheckedIn { get; set; }
-        public decimal TotalPrice { get; set; }
-        public int MyProperty { get; set; }
+        public decimal TotalPrice { get; set; }       
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
+        public int Id1 { get; set; }
         public int ParkingNumber { get; set; }
         public int ParkingTypeId { get; set; }
         public string Title { get; set; }

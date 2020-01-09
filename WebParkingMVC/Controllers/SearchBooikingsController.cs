@@ -19,9 +19,9 @@ namespace WebParkingMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult searchBooking(string lastName, DateTime startDate)
+        public ActionResult searchBooking(string lastName)
         {
-            List<FullBookRoomModel> results = da.SearchBookings(lastName, startDate);
+            List<FullBookRoomModel> results = da.SearchBookings(lastName);
             return View(results);
         }
 

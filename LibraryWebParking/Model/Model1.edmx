@@ -92,7 +92,6 @@
         </Function>
         <Function Name="spBookingsSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="lastName" Type="nvarchar" Mode="In" />
-          <Parameter Name="startDate" Type="date" Mode="In" />
         </Function>
         <Function Name="spGetAvailableParkingPositions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="startDate" Type="date" Mode="In" />
@@ -286,8 +285,7 @@
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="spBookingsSearch" ReturnType="Collection(WebParkingDBModel.FullBookRoomModel)">
-            <Parameter Name="lastName" Mode="In" Type="String" />
-            <Parameter Name="startDate" Mode="In" Type="DateTime" />
+          <Parameter Name="lastName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spBookingsCheckIn">
           <Parameter Name="Id" Mode="In" Type="Int32" />

@@ -52,12 +52,12 @@ namespace LibraryWebParking.Repository
         }
 
 
-        public List<FullBookRoomModel> SearchBookings(string lastName, DateTime startDate)
+        public List<FullBookRoomModel> SearchBookings(string lastName)
         {
             List<FullBookRoomModel> bookSearchResults = null;
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                bookSearchResults = db.spBookingsSearch(lastName, startDate).ToList();
+                bookSearchResults = db.spBookingsSearch(lastName).ToList();
                 return bookSearchResults;
             }
 
