@@ -14,14 +14,14 @@ namespace WebParkingMVC.Controllers
         // GET: SearchBooikings
         public ActionResult searchBooking()
         {
-            List<spBookingsSearch_Result> results = new List<spBookingsSearch_Result>();
+            List<FullBookRoomModel> results = new List<FullBookRoomModel>();
             return View(results);
         }
 
         [HttpPost]
         public ActionResult searchBooking(string lastName, DateTime startDate)
         {
-            List<spBookingsSearch_Result> results = da.SearchBookings(lastName, startDate);
+            List<FullBookRoomModel> results = da.SearchBookings(lastName, startDate);
             return View(results);
         }
 

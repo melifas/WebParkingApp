@@ -69,6 +69,8 @@
     <Build Include="dbo\Stored Procedures\spgetAvailableparkingsType.sql" />
     <Build Include="dbo\Stored Procedures\spGetAvailableParkingPositions.sql" />
     <Build Include="dbo\Stored Procedures\spBookingInsert.sql" />
+    <Build Include="dbo\Stored Procedures\spBookingsSearch.sql" />
+    <Build Include="dbo\Stored Procedures\spBookingsCheckIn.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="WebParkingDB.refactorlog" />

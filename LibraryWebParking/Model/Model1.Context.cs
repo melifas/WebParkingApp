@@ -255,7 +255,7 @@ namespace LibraryWebParking.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ParkingTypes>("pt", mergeOption, startDateParameter, endDateParameter);
         }
     
-        public virtual ObjectResult<spBookingsSearch_Result> spBookingsSearch(string lastName, Nullable<System.DateTime> startDate)
+        public virtual ObjectResult<FullBookRoomModel> spBookingsSearch(string lastName, Nullable<System.DateTime> startDate)
         {
             var lastNameParameter = lastName != null ?
                 new ObjectParameter("lastName", lastName) :
@@ -265,7 +265,7 @@ namespace LibraryWebParking.Model
                 new ObjectParameter("startDate", startDate) :
                 new ObjectParameter("startDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBookingsSearch_Result>("spBookingsSearch", lastNameParameter, startDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FullBookRoomModel>("spBookingsSearch", lastNameParameter, startDateParameter);
         }
     
         public virtual int spBookingsCheckIn(Nullable<int> id)
@@ -276,7 +276,5 @@ namespace LibraryWebParking.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBookingsCheckIn", idParameter);
         }
-
-        public System.Data.Entity.DbSet<WebParkingMVC.Models.FullBookRoomModel> FullBookRoomModels { get; set; }
     }
 }

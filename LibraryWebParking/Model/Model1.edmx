@@ -285,7 +285,7 @@
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="spBookingsSearch" ReturnType="Collection(WebParkingDBModel.spBookingsSearch_Result)">
+          <FunctionImport Name="spBookingsSearch" ReturnType="Collection(WebParkingDBModel.FullBookRoomModel)">
             <Parameter Name="lastName" Mode="In" Type="String" />
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -329,6 +329,25 @@
           <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
         </ComplexType>
         <ComplexType Name="spBookingsSearch_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="Int32" Name="ParkingId" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="CheckedIn" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Phone" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id1" Nullable="false" />
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ParkingTypeId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Desription" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="FullBookRoomModel">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="ClientId" Nullable="true" />
           <Property Type="Int32" Name="ParkingId" Nullable="true" />
@@ -431,8 +450,8 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="pt" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType" />
           <FunctionImportMapping FunctionImportName="spBookingsSearch" FunctionName="WebParkingDBModel.Store.spBookingsSearch">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebParkingDBModel.spBookingsSearch_Result">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.FullBookRoomModel">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
