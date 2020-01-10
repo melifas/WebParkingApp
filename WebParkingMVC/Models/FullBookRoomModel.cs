@@ -17,8 +17,7 @@ namespace WebParkingMVC.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Phone { get; set; }
-        public string Email { get; set; }
-        public int Id1 { get; set; }
+        public string Email { get; set; }      
         public int ParkingNumber { get; set; }
         public int ParkingTypeId { get; set; }
         public string Title { get; set; }

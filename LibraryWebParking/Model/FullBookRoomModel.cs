@@ -24,7 +24,6 @@ namespace LibraryWebParking.Model
         public string LatName { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
-        public int Id1 { get; set; }
         public string ParkingNumber { get; set; }
         public int ParkingTypeId { get; set; }
         public string Title { get; set; }
