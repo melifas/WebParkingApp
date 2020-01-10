@@ -49,7 +49,7 @@ namespace WebParkingMVC.Controllers
                  }*/
             if (ModelState.IsValid)
             {
-                da.BookClient(model.FirstName, model.LastName, model.startDate, model.endDate, model.ParkingtypeId);
+                da.BookClient(model.FirstName, model.LastName, model.startDate, model.endDate, model.ParkingtypeId);                
                 return RedirectToAction("Index");
             }
             return View(model);

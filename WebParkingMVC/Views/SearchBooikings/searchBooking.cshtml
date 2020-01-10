@@ -4,22 +4,20 @@
     ViewBag.Title = "searchBooking";
 }
 
-<h2>searchBooking</h2>
+<h2>Search for Client</h2>
 
 @using (Html.BeginForm("searchBooking", "SearchBooikings", FormMethod.Post))
-{   
-    <input type="text" name="lastName" value="" />
+{
+    <input type="text" name="lastName" value="Enter Last Name...." />
     <input type="submit" value="SearchBooking" />
 
 
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ClientId)
+                @Html.DisplayNameFor(model => model.LatName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkingId)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
@@ -32,85 +30,58 @@
             <th>
                 @Html.DisplayNameFor(model => model.CheckedIn)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatName)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Phone)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
-            </th>            
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ParkingNumber)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkingTypeId)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Desription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
+
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkingId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckedIn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LatName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>               
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkingNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkingTypeId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Desription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LatName)    @Html.DisplayFor(modelItem => item.FirstName)
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckedIn)
+        </td>
+        
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkingNumber)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+       
+    </tr>
         }
 
     </table>

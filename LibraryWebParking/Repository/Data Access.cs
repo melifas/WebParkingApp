@@ -70,6 +70,7 @@ namespace LibraryWebParking.Repository
             {
 
                 db.spBookingsCheckIn(bookingId);
+                db.SaveChanges();
             }
             
         }

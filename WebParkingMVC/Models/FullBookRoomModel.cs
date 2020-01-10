@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +14,8 @@ namespace WebParkingMVC.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set;}    
         public bool CheckedIn { get; set; }
-        public decimal TotalPrice { get; set; }       
+        public decimal TotalPrice { get; set; }
+     
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Phone { get; set; }

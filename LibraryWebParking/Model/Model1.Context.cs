@@ -229,32 +229,6 @@ namespace LibraryWebParking.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBookingInsert", clientIdParameter, parkingIdParameter, startDateParameter, endDateParameter, totalCostParameter);
         }
     
-        public virtual ObjectResult<ParkingTypes> pt(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
-        {
-            var startDateParameter = startDate.HasValue ?
-                new ObjectParameter("startDate", startDate) :
-                new ObjectParameter("startDate", typeof(System.DateTime));
-    
-            var endDateParameter = endDate.HasValue ?
-                new ObjectParameter("endDate", endDate) :
-                new ObjectParameter("endDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ParkingTypes>("pt", startDateParameter, endDateParameter);
-        }
-    
-        public virtual ObjectResult<ParkingTypes> pt(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, MergeOption mergeOption)
-        {
-            var startDateParameter = startDate.HasValue ?
-                new ObjectParameter("startDate", startDate) :
-                new ObjectParameter("startDate", typeof(System.DateTime));
-    
-            var endDateParameter = endDate.HasValue ?
-                new ObjectParameter("endDate", endDate) :
-                new ObjectParameter("endDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ParkingTypes>("pt", mergeOption, startDateParameter, endDateParameter);
-        }
-    
         public virtual ObjectResult<FullBookRoomModel> spBookingsSearch(string lastName)
         {
             var lastNameParameter = lastName != null ?
