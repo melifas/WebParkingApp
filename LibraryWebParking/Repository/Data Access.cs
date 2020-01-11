@@ -76,14 +76,14 @@ namespace LibraryWebParking.Repository
         }
 
 
-        public void BookClient(string firstName,string lastName, DateTime startDate, DateTime endDate,int ParkingTypeId) 
+        public void BookClient(string firstName,string lastName, string ImagePath, DateTime startDate, DateTime endDate,int ParkingTypeId) 
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
 
                 ParkingTypes parkingtype =  db.ParkingTypes.Where(x => x.Id == ParkingTypeId).FirstOrDefault();
 
-                spInsertClient_Result client = db.spInsertClient(firstName, lastName).FirstOrDefault();
+                spInsertClient_Result client = db.spInsertClient(firstName, lastName, ImagePath).FirstOrDefault();
 
                 TimeSpan timeStaying =  endDate.Date.Subtract(startDate.Date);
 
@@ -103,5 +103,12 @@ namespace LibraryWebParking.Repository
 
         }
 
+        public Clients ClientDetails(int id) 
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                return db.Clients.Where(x => x.Id == id).FirstOrDefault();               
+            }
+        }
     }
 }

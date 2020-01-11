@@ -25,5 +25,10 @@ namespace WebParkingMVC.Models
 
         [Required]
         public string LastName { get; set; }
+
+        [Display(Name = "Upload Image")]
+        public string ImagePath { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

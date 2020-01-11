@@ -26,6 +26,7 @@
           <Property Name="LatName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Parkings">
           <Key>
@@ -105,6 +106,7 @@
         <Function Name="spInsertClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="firstName" Type="nvarchar" Mode="In" />
           <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ImagePath" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="WebParkingDBModelStoreContainer">
           <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
@@ -152,6 +154,7 @@
           <Property Name="Phone" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Clients" FromRole="Clients" ToRole="Bookings" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Parkings">
           <Key>
@@ -263,6 +266,7 @@
           <FunctionImport Name="spInsertClient" ReturnType="Collection(WebParkingDBModel.spInsertClient_Result)">
             <Parameter Name="firstName" Mode="In" Type="String" />
             <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="ImagePath" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetAvailableParkingPositions" ReturnType="Collection(WebParkingDBModel.spGetAvailableParkingPositions_Result)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
@@ -362,6 +366,7 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="WebParkingDBModel.Clients">
               <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LatName" ColumnName="LatName" />
