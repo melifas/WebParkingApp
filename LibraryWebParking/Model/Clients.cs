@@ -11,7 +11,8 @@ namespace LibraryWebParking.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Clients
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,15 @@ namespace LibraryWebParking.Model
         {
             this.Bookings = new HashSet<Bookings>();
         }
-    
+
         public int Id { get; set; }
+        [Display(Name ="First Name")]
         public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
         public string LatName { get; set; }
         public Nullable<int> Phone { get; set; }
         public string Email { get; set; }
+        [Display(Name = "Profile Foto")]
         public string ImagePath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

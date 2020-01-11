@@ -1,9 +1,17 @@
 ﻿@model LibraryWebParking.Model.Clients
 
 <div>
-    <h4>Clients</h4>
+    <h4>Client   @Model.FirstName + @Model.LatName Profile Page</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -36,13 +44,7 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
 
-        <dd>
-            <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
-        </dd>
 
     </dl>
 </div>
