@@ -175,6 +175,7 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchBooikingsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,6 +185,7 @@
     <Compile Include="Models\BookRoomModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\FullBookRoomModel.cs" />
+    <Compile Include="Models\gmailModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -391,6 +393,7 @@
     <Content Include="Views\Home\SearchAvalilableParkingTypes.cshtml" />
     <Content Include="Views\SearchBooikings\searchBooking.cshtml" />
     <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Mail\SendMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
