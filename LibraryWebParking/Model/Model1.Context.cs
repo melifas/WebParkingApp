@@ -148,7 +148,7 @@ namespace LibraryWebParking.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spgetparkings_Result>("spgetparkings", startDateParameter, endDateParameter);
         }
     
-        public virtual ObjectResult<spInsertClient_Result> spInsertClient(string firstName, string lastName, string imagePath)
+        public virtual ObjectResult<spInsertClient_Result> spInsertClient(string firstName, string lastName, string imagePath, string email, string phone)
         {
             var firstNameParameter = firstName != null ?
                 new ObjectParameter("firstName", firstName) :
@@ -162,7 +162,15 @@ namespace LibraryWebParking.Model
                 new ObjectParameter("ImagePath", imagePath) :
                 new ObjectParameter("ImagePath", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInsertClient_Result>("spInsertClient", firstNameParameter, lastNameParameter, imagePathParameter);
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spInsertClient_Result>("spInsertClient", firstNameParameter, lastNameParameter, imagePathParameter, emailParameter, phoneParameter);
         }
     
         public virtual ObjectResult<spGetAvailableParkingPositions_Result> spGetAvailableParkingPositions(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<int> roomTypeID)

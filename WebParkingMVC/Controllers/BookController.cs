@@ -1,9 +1,14 @@
 ﻿using LibraryWebParking.Repository;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Configuration;
+using System.Net.Mail;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using WebParkingMVC.Models;
 
@@ -45,15 +50,32 @@ namespace WebParkingMVC.Controllers
                 fileNme = Path.Combine(Server.MapPath("~/Image/"), fileNme);
                 model.ImageFile.SaveAs(fileNme);
 
-                da.BookClient(model.FirstName, model.LastName,model.ImagePath, model.startDate, model.endDate, model.ParkingtypeId);
+                da.BookClient(model.FirstName, model.LastName,model.ImagePath,model.Email,model.Phone, model.startDate, model.endDate, model.ParkingtypeId);
 
                 ModelState.Clear();
+                //Αποστολή mail ασύνχρονα
+                HostingEnvironment.QueueBackgroundWorkItem(ct => SendMailAsync( model));
                 return RedirectToAction("Index");
             }
             return View(model);              
         }
 
+        private async void SendMailAsync(BookRoomModel model)
+        {
+            using (SmtpClient client = new SmtpClient())
+            {
+                SmtpSection smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
+                MailAddress from = new MailAddress(smtpSection.From);
+                MailAddress to = new MailAddress(model.Email, string.Format("{0} {1}",model.LastName,model.FirstName));
 
+                MailMessage message = new MailMessage(from, to);
+                message.Subject ="hello from meletis";
+                message.Body = "hi fro mmail";
+                message.IsBodyHtml = false;
+
+                client.Send(message);
+            }
+        }
 
         public ActionResult CreateBooking(int id = 0)
         {

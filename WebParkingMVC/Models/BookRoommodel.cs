@@ -25,6 +25,9 @@ namespace WebParkingMVC.Models
 
         [Required]
         public string LastName { get; set; }
+        public string Phone { get; set; }
+        [Required]
+        public string Email { get; set; }
 
         [Display(Name = "Upload Image")]
         public string ImagePath { get; set; }

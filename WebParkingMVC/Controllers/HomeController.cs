@@ -48,8 +48,5 @@ namespace WebParkingMVC.Controllers
 
             return View(model);
         }
-
-
-
     }
 }

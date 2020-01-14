@@ -24,9 +24,9 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LatName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="int" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="ImagePath" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Parkings">
           <Key>
@@ -107,6 +107,8 @@
           <Parameter Name="firstName" Type="nvarchar" Mode="In" />
           <Parameter Name="lastName" Type="nvarchar" Mode="In" />
           <Parameter Name="ImagePath" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="WebParkingDBModelStoreContainer">
           <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
@@ -151,10 +153,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="Int32" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Clients" FromRole="Clients" ToRole="Bookings" />
-          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Parkings">
           <Key>
@@ -267,6 +269,8 @@
             <Parameter Name="firstName" Mode="In" Type="String" />
             <Parameter Name="lastName" Mode="In" Type="String" />
             <Parameter Name="ImagePath" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetAvailableParkingPositions" ReturnType="Collection(WebParkingDBModel.spGetAvailableParkingPositions_Result)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
