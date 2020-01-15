@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Configuration;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -40,7 +41,7 @@ namespace WebParkingMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult BookRoom(BookRoomModel model)
-        {           
+        {
             if (ModelState.IsValid)
             {
                 string fileNme = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
@@ -50,14 +51,14 @@ namespace WebParkingMVC.Controllers
                 fileNme = Path.Combine(Server.MapPath("~/Image/"), fileNme);
                 model.ImageFile.SaveAs(fileNme);
 
-                da.BookClient(model.FirstName, model.LastName,model.ImagePath,model.Email,model.Phone, model.startDate, model.endDate, model.ParkingtypeId);
+                da.BookClient(model.FirstName, model.LastName, model.ImagePath, model.Email, model.Phone, model.startDate, model.endDate, model.ParkingtypeId);
 
                 ModelState.Clear();
-                //Αποστολή mail ασύνχρονα
-                HostingEnvironment.QueueBackgroundWorkItem(ct => SendMailAsync( model));
+                //Αποστολή mail ασύγχρονα                
+                HostingEnvironment.QueueBackgroundWorkItem(ct => SendMailAsync(model));
                 return RedirectToAction("Index");
             }
-            return View(model);              
+            return View(model);
         }
 
         private async void SendMailAsync(BookRoomModel model)
@@ -66,15 +67,27 @@ namespace WebParkingMVC.Controllers
             {
                 SmtpSection smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
                 MailAddress from = new MailAddress(smtpSection.From);
-                MailAddress to = new MailAddress(model.Email, string.Format("{0} {1}",model.LastName,model.FirstName));
+                MailAddress to = new MailAddress(model.Email, string.Format("{0} {1}", model.LastName, model.FirstName));
 
                 MailMessage message = new MailMessage(from, to);
-                message.Subject ="hello from meletis";
-                message.Body = "hi fro mmail";
+                message.Subject = "hello from meletis";
+
+                string template = System.IO.File.ReadAllText(HostingEnvironment.MapPath("~/Content/templates/template.txt"));
+
+                message.Body = string.Format(template, model.FirstName, model.LastName);
                 message.IsBodyHtml = false;
 
                 client.Send(message);
             }
+        }
+
+        public static Task<string> EmailTemplate(string template)
+        {
+            var templatePath = HostingEnvironment.MapPath("~/Content/templates/") + template + "cs.html";
+            StreamReader stream = new StreamReader(templatePath);
+            var body = stream.ReadToEndAsync();
+            stream.Close();
+            return body;
         }
 
         public ActionResult CreateBooking(int id = 0)
@@ -85,6 +98,6 @@ namespace WebParkingMVC.Controllers
             }
 
             return View();
-        }       
+        }
     }
 }

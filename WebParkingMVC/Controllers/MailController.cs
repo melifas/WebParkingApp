@@ -8,7 +8,7 @@ using WebParkingMVC.Models;
 using System.Net;
 using System.Net.Mail;
 
-namespace WebParkingMVC.Controllers
+/*namespace WebParkingMVC.Controllers
 {
     public class MailController : Controller
     {
@@ -19,7 +19,7 @@ namespace WebParkingMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult SendEmail(WebParkingMVC.Models.gmailModel model)
+       *//* public ActionResult SendEmail(WebParkingMVC.Models.gmailModel model)
         {
             MailMessage mm = new MailMessage("melifas1978@gmail.com", model.To);
             mm.Subject = model.Subject;
@@ -37,8 +37,8 @@ namespace WebParkingMVC.Controllers
             smtp.Send(mm);
             ViewBag.Message = "Succesfully delivred";
             return View();
-        }
+        }*//*
 
         
     }
-}
+}*/

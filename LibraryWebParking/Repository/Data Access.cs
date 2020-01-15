@@ -103,6 +103,32 @@ namespace LibraryWebParking.Repository
 
         }
 
+        public Bookings BookingDetails(string firstName, string lastName, string ImagePath, string email, string Phone, DateTime startDate, DateTime endDate, int ParkingTypeId)
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+
+                ParkingTypes parkingtype = db.ParkingTypes.Where(x => x.Id == ParkingTypeId).FirstOrDefault();
+
+                spInsertClient_Result client = db.spInsertClient(firstName, lastName, ImagePath, email, Phone).FirstOrDefault();
+
+                TimeSpan timeStaying = endDate.Date.Subtract(startDate.Date);
+
+                List<spGetAvailableParkingPositions_Result> availableParkingPositions = db.spGetAvailableParkingPositions(startDate, endDate, ParkingTypeId).ToList();
+
+                Bookings booking = new Bookings()
+                {
+                    ClientId = client.Id,
+                    ParkingId = availableParkingPositions.First().Id,
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    TotalPrice = timeStaying.Days * parkingtype.Price
+                };
+                return booking;
+            }
+
+        }
+
         public Clients ClientDetails(int id) 
         {
             using (WebParkingDBContex db = new WebParkingDBContex())

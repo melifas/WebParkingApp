@@ -10,17 +10,23 @@
 namespace LibraryWebParking.Model
 {
     using System;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class FullBookRoomModel
     {
         public int Id { get; set; }
         public Nullable<int> ClientId { get; set; }
         public Nullable<int> ParkingId { get; set; }
+        [Display(Name = "Start Booking Date")]
         public Nullable<System.DateTime> StartDate { get; set; }
+        [Display(Name = "Finish Booking Date")]
         public Nullable<System.DateTime> EndDate { get; set; }
+
         public Nullable<decimal> TotalPrice { get; set; }
         public Nullable<bool> CheckedIn { get; set; }
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Display(Name = "Reservation")]
         public string LatName { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
