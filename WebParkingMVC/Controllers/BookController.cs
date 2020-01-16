@@ -1,4 +1,5 @@
-﻿using LibraryWebParking.Repository;
+﻿using LibraryWebParking.Model;
+using LibraryWebParking.Repository;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -51,44 +52,51 @@ namespace WebParkingMVC.Controllers
                 fileNme = Path.Combine(Server.MapPath("~/Image/"), fileNme);
                 model.ImageFile.SaveAs(fileNme);
 
+                
                 da.BookClient(model.FirstName, model.LastName, model.ImagePath, model.Email, model.Phone, model.startDate, model.endDate, model.ParkingtypeId);
 
                 ModelState.Clear();
                 //Αποστολή mail ασύγχρονα                
                 HostingEnvironment.QueueBackgroundWorkItem(ct => SendMailAsync(model));
+
                 return RedirectToAction("Index");
             }
             return View(model);
         }
+      
 
         private async void SendMailAsync(BookRoomModel model)
         {
             using (SmtpClient client = new SmtpClient())
             {
+                WebParkingDBContex db = new WebParkingDBContex();
+                TimeSpan timeStaying = model.endDate.Date.Subtract(model.startDate.Date);
+                ParkingTypes parkingtype = db.ParkingTypes.Where(x => x.Id == model.ParkingtypeId).FirstOrDefault();
+                var totalPrice = timeStaying.Days * parkingtype.Price;
+
                 SmtpSection smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
                 MailAddress from = new MailAddress(smtpSection.From);
-                MailAddress to = new MailAddress(model.Email, string.Format("{0} {1}", model.LastName, model.FirstName));
+                MailAddress to = new MailAddress(model.Email,
+                                                string.Format("{0} {1} {2} {3} {4}", 
+                                                model.LastName, 
+                                                model.FirstName, 
+                                                model.startDate, 
+                                                model.endDate,
+                                                totalPrice                                                
+                                                ));
 
                 MailMessage message = new MailMessage(from, to);
-                message.Subject = "hello from meletis";
-
+                message.Subject = "Reservation Details";
+                //Διάβασε το template.txt
                 string template = System.IO.File.ReadAllText(HostingEnvironment.MapPath("~/Content/templates/template.txt"));
 
-                message.Body = string.Format(template, model.FirstName, model.LastName);
+                message.Body = string.Format(template, model.FirstName, model.LastName,model.startDate,model.endDate,totalPrice);
                 message.IsBodyHtml = false;
 
                 client.Send(message);
             }
         }
-
-        public static Task<string> EmailTemplate(string template)
-        {
-            var templatePath = HostingEnvironment.MapPath("~/Content/templates/") + template + "cs.html";
-            StreamReader stream = new StreamReader(templatePath);
-            var body = stream.ReadToEndAsync();
-            stream.Close();
-            return body;
-        }
+     
 
         public ActionResult CreateBooking(int id = 0)
         {
