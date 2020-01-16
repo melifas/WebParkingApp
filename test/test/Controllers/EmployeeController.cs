@@ -10,11 +10,13 @@ namespace test.Controllers
 {
     public class EmployeeController : Controller
     {
+        Data_Access da = new Data_Access();
         public object Data_Access { get; private set; }
 
         // GET: Employee
         public ActionResult SignUp()
         {
+
             return View();
         }
         
@@ -23,11 +25,19 @@ namespace test.Controllers
         {
             if (ModelState.IsValid)
             {
-                Data_Access da = new Data_Access();
+                
                 da.CreateEmployee(em.Id,em.FirstName,em.lastName,em.Password);
                 return RedirectToAction("SignUp");                
             };
             return View();
         }
+
+        public ActionResult ListCustomers()
+        {           
+            return View(da.LoadEmployees());
+
+        }
+
+
     }
 }
