@@ -11,7 +11,8 @@ namespace LibraryWebParking.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ParkingTypes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,10 @@ namespace LibraryWebParking.Model
         }
     
         public int Id { get; set; }
+
+        [Display(Name = "Type of Vehicle")]
         public string Title { get; set; }
+        [Display(Name ="Details")]
         public string Desription { get; set; }
         public decimal Price { get; set; }
     
