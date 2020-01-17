@@ -23,7 +23,7 @@ namespace LibraryWebParking.Model
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LatName { get; set; }
-        public int Phone { get; set; }
+        public Nullable<int> Phone { get; set; }
         public string Email { get; set; }
         public string ImagePath { get; set; }
     

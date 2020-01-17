@@ -190,7 +190,7 @@ namespace LibraryWebParking.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAvailableParkingPositions_Result>("spGetAvailableParkingPositions", startDateParameter, endDateParameter, roomTypeIDParameter);
         }
     
-        public virtual ObjectResult<ParkingTypes> spgetAvailableparkingsType(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        public virtual ObjectResult<spgetAvailableparkingsTypeCount> spgetAvailableparkingsType(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
         {
             var startDateParameter = startDate.HasValue ?
                 new ObjectParameter("startDate", startDate) :
@@ -200,20 +200,7 @@ namespace LibraryWebParking.Model
                 new ObjectParameter("endDate", endDate) :
                 new ObjectParameter("endDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ParkingTypes>("spgetAvailableparkingsType", startDateParameter, endDateParameter);
-        }
-    
-        public virtual ObjectResult<ParkingTypes> spgetAvailableparkingsType(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, MergeOption mergeOption)
-        {
-            var startDateParameter = startDate.HasValue ?
-                new ObjectParameter("startDate", startDate) :
-                new ObjectParameter("startDate", typeof(System.DateTime));
-    
-            var endDateParameter = endDate.HasValue ?
-                new ObjectParameter("endDate", endDate) :
-                new ObjectParameter("endDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ParkingTypes>("spgetAvailableparkingsType", mergeOption, startDateParameter, endDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spgetAvailableparkingsTypeCount>("spgetAvailableparkingsType", startDateParameter, endDateParameter);
         }
     
         public virtual int spBookingInsert(Nullable<int> clientId, Nullable<int> parkingId, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<decimal> totalCost)

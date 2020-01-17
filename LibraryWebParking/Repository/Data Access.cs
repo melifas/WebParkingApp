@@ -41,9 +41,9 @@ namespace LibraryWebParking.Repository
             }
         }*/
 
-        public List<ParkingTypes> AvailableParkings(DateTime startDate, DateTime endDate)
+        public List<spgetAvailableparkingsTypeCount> AvailableParkings(DateTime startDate, DateTime endDate)
         {
-            List<ParkingTypes> parkingTypes = null;
+            List<spgetAvailableparkingsTypeCount> parkingTypes = null;
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {

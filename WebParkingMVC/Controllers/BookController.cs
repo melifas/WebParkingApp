@@ -90,7 +90,7 @@ namespace WebParkingMVC.Controllers
                 //Διάβασε το template.txt
                 string template = System.IO.File.ReadAllText(HostingEnvironment.MapPath("~/Content/templates/template.txt"));
 
-                message.Body = string.Format(template, model.FirstName, model.LastName,model.startDate,model.endDate,totalPrice);
+                message.Body = string.Format(template, model.FirstName, model.LastName,model.startDate,model.endDate, string.Format("{0:C0}", totalPrice));
                 message.IsBodyHtml = false;
 
                 client.Send(message);
