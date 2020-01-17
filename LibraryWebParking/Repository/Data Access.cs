@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace LibraryWebParking.Repository
 {
@@ -42,12 +43,13 @@ namespace LibraryWebParking.Repository
 
         public List<ParkingTypes> AvailableParkings(DateTime startDate, DateTime endDate)
         {
-            List<ParkingTypes> results = null;
+            List<ParkingTypes> parkingTypes = null;
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                results = db.spgetAvailableparkingsType(startDate, endDate).ToList();
-                return results;
+                parkingTypes = db.spgetAvailableparkingsType(startDate, endDate).ToList();
+
+                return parkingTypes;
             }
         }
 

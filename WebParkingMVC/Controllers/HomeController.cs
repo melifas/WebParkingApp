@@ -44,8 +44,7 @@ namespace WebParkingMVC.Controllers
         {
             ViewBag.startDate = startDate;
             ViewBag.endDate = endDate;       
-            List<ParkingTypes> model = da.AvailableParkings(startDate, endDate);
-
+            List<ParkingTypes> model = da.AvailableParkings(startDate, endDate);            
             return View(model);
         }
     }
