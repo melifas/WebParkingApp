@@ -245,5 +245,10 @@ namespace LibraryWebParking.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBookingsCheckIn", idParameter);
         }
+    
+        public virtual ObjectResult<spParkingWithTypes_Result> spParkingWithTypes()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spParkingWithTypes_Result>("spParkingWithTypes");
+        }
     }
 }

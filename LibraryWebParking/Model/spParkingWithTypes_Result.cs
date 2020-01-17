@@ -11,12 +11,13 @@ namespace LibraryWebParking.Model
 {
     using System;
     
-    public partial class spgetAvailableparkingsTypeCount
+    public partial class spParkingWithTypes_Result
     {
-        public int Id { get; set; }
+        public string ParkingNumber { get; set; }
         public string Title { get; set; }
+        public int Id { get; set; }
+        public int ParkingTypeId { get; set; }
         public string Desription { get; set; }
         public decimal Price { get; set; }
-        public Nullable<int> remainingPositions { get; set; }
     }
 }

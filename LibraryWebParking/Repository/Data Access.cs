@@ -20,6 +20,16 @@ namespace LibraryWebParking.Repository
             }
         }
 
+
+        public List<spParkingWithTypes_Result> getParkingWithTypes()
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                var results = db.spParkingWithTypes().ToList();
+                return results;
+            }
+        }
+
         public List<ParkingTypes> getParkingsType()
         {
             using (WebParkingDBContex db = new WebParkingDBContex())

@@ -396,6 +396,8 @@
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Mail\SendMail.cshtml" />
     <Content Include="Views\Parking\Create.cshtml" />
+    <Content Include="Views\Parking\SeeAllParkings.cshtml" />
+    <Content Include="Views\Parking\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

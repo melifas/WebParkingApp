@@ -1,4 +1,5 @@
-﻿using LibraryWebParking.Repository;
+﻿using LibraryWebParking.Model;
+using LibraryWebParking.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,16 @@ namespace WebParkingMVC.Controllers
     {
         Data_Access da = new Data_Access();
         // GET: Parking
-        public ActionResult Index()
+        public ActionResult SeeAllParkings()
         {
-            return View();
+
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                
+                return View(da.getParkingWithTypes());
+            }
+
+           
         }
 
         // GET: Parking/Details/5
@@ -40,7 +48,7 @@ namespace WebParkingMVC.Controllers
             if (ModelState.IsValid)
             {
                 da.AddParking(parkingModel.ParkingNumber,parkingModel.ParkingTypeId);
-                 return RedirectToAction("Index","Home");
+                 return RedirectToAction("SeeAllParkings", "Parking");
             }
             else
             {
@@ -76,23 +84,31 @@ namespace WebParkingMVC.Controllers
         // GET: Parking/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                return View(db.Parkings.Where(x=>x.Id==id).FirstOrDefault());
+            }
+            
         }
 
         // POST: Parking/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Parkings parkings)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                using (WebParkingDBContex db = new WebParkingDBContex())
+                {
+                    Parkings parking = db.Parkings.Where(x => x.Id == id).FirstOrDefault();                   
+                    db.Parkings.Remove(parking);
+                    db.SaveChanges();                   
+                }
+                return RedirectToAction("SeeAllParkings", "Parking");
             }
             catch
             {
                 return View();
-            }
+            }            
         }
     }
 }
