@@ -175,7 +175,6 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\SearchBooikingsController.cs" />
@@ -394,7 +393,6 @@
     <Content Include="Views\Home\SearchAvalilableParkingTypes.cshtml" />
     <Content Include="Views\SearchBooikings\searchBooking.cshtml" />
     <Content Include="Views\Client\Details.cshtml" />
-    <Content Include="Views\Mail\SendMail.cshtml" />
     <Content Include="Views\Parking\Create.cshtml" />
     <Content Include="Views\Parking\SeeAllParkings.cshtml" />
     <Content Include="Views\Parking\Delete.cshtml" />
