@@ -82,8 +82,12 @@ namespace WebParkingMVC.Controllers
         }
 
         // GET: Parking/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null) 
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
                 return View(db.Parkings.Where(x=>x.Id==id).FirstOrDefault());
@@ -93,7 +97,7 @@ namespace WebParkingMVC.Controllers
 
         // POST: Parking/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Parkings parkings)
+        public ActionResult Delete(int id)
         {
             try
             {
@@ -101,9 +105,10 @@ namespace WebParkingMVC.Controllers
                 {
                     Parkings parking = db.Parkings.Where(x => x.Id == id).FirstOrDefault();                   
                     db.Parkings.Remove(parking);
-                    db.SaveChanges();                   
+                    db.SaveChanges();
+                    return RedirectToAction("SeeAllParkings", "Parking");
                 }
-                return RedirectToAction("SeeAllParkings", "Parking");
+                
             }
             catch
             {
