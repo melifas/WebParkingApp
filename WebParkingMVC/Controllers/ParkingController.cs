@@ -102,10 +102,22 @@ namespace WebParkingMVC.Controllers
             {
                 using (WebParkingDBContex db = new WebParkingDBContex())
                 {
-                    Parkings parking = db.Parkings.Where(x => x.Id == id).FirstOrDefault();                   
-                    db.Parkings.Remove(parking);
-                    db.SaveChanges();
-                    return RedirectToAction("SeeAllParkings", "Parking");
+                    Parkings parking = db.Parkings.Where(x => x.Id == id).FirstOrDefault();
+                    Bookings bookings = db.Bookings.Where(c => c.ParkingId == parking.Id).FirstOrDefault();
+
+                   /* if (parking.Id==bookings.ParkingId)
+                    {
+
+                        ViewBag.Message = "Cannot Delete a Parking Position when it is Booked ";
+                       
+                    }*/
+                   
+                    
+                        db.Parkings.Remove(parking);
+                        db.SaveChanges();
+                        return RedirectToAction("SeeAllParkings", "Parking");
+                    
+                    return View();
                 }
                 
             }
