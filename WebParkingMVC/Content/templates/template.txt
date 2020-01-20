@@ -1,0 +1,10 @@
+﻿Thank you for your booking 
+
+Details for you reservation
+
+First Name : {0}
+Last Name : {1}
+Reservation Start Date : {2}
+Reservation End Date :{3}
+Total Cost : {4}
+

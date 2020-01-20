@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibraryWebParking.Model.ParkingTypes>
+﻿@model IEnumerable<LibraryWebParking.Model.spgetAvailableparkingsTypeCount>
 
 @{
     ViewBag.Title = "AvailableParkingTypes";
@@ -8,15 +8,15 @@
 
 }
 
-<h2>AvailableParkingTypes</h2>
+<h2>Available Parkings</h2>
 
 @using (Html.BeginForm("AvailableParkingTypes", "Home", FormMethod.Post))
 {
     <input type="date" name="startDate" value="@startDate" />
     <input type="date" name="endDate" value="@endDate" />
-    <input type="submit" value="Get Rooms" />
+    <input type="submit" value="See available Parkings" />
 
-    <table class="table">
+    <table class="table  table-hover">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
@@ -27,26 +27,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.remainingPositions)
+            </th>
         </tr>
 
         @foreach (var parkingType in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => parkingType.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => parkingType.Desription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => parkingType.Price)
-                </td>
-                <td>
-                    @Html.ActionLink("Book Now", "BookRoom", "Book", new { @id = parkingType.Id, @start = startDate, @end = endDate }, null)
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => parkingType.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => parkingType.Desription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => parkingType.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => parkingType.remainingPositions)
+        </td>
+        <td>
+            @Html.ActionLink("Book Now", "BookRoom", "Book", new { @id = parkingType.Id, @start = startDate, @end = endDate }, null)
 
-                </td>
-            </tr>
+        </td>
+    </tr>
         }
 
     </table>

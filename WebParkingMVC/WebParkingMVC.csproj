@@ -173,8 +173,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\SearchBooikingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +186,7 @@
     <Compile Include="Models\FullBookRoomModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ParkingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -200,6 +203,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap_super.css" />
+    <Content Include="Content\templates\template.txt" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -386,11 +391,15 @@
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Home\AvailableParkingTypes.cshtml" />
     <Content Include="Views\Book\CreateBooking.cshtml" />
-    <Content Include="Views\Home\SearchAvalilableParkingTypes.cshtml" />
     <Content Include="Views\SearchBooikings\searchBooking.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Parking\Create.cshtml" />
+    <Content Include="Views\Parking\SeeAllParkings.cshtml" />
+    <Content Include="Views\Parking\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

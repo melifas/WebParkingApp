@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LibraryWebParking.Model.spParkingWithTypes_Result>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table  table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ParkingNumber)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <th>
+                    |
+                    @Html.ActionLink("Delete", "Delete", "Parking", new { id = item.Id }, null)
+                </th>
+            </tr>
+        }
+    </tbody>
+
+</table>
