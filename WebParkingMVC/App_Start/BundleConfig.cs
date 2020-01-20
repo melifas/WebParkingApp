@@ -25,6 +25,46 @@ namespace WebParkingMVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            #region Template
+
+            bundles.Add(new ScriptBundle("~/template/js").Include(
+                       "~/Scripts/jquery.js",
+                       "~/Scripts/jquery.easing.1.3.js",
+                       "~/Scripts/bootstrap.js",
+                       "~/Scripts/jcarousel/jquery.jcarousel.min.js",
+                       "~/Scripts/jquery.fancybox.pack.js",
+                       "~/Scripts/jquery.fancybox-media.js",
+                       "~/Scripts/google-code-prettify/prettify.js",
+                       "~/Scripts/portfolio/jquery.quicksand.js",
+                       "~/Scripts/portfolio/setting.js",
+                       "~/Scripts/jquery.flexslider.js",
+                       "~/Scripts/jquery.nivo.slider.js",
+                       "~/Scripts/modernizr.custom.js",
+                       "~/Scripts/jquery.ba-cond.min.js",
+                       "~/Scripts/jquery.slitslider.js",
+                       "~/Scripts/animate.js",
+                       "~/ Scripts /custom.js"
+                       ));
+
+            bundles.Add(new StyleBundle("~/template/css").Include(
+                    "~/Content/css/bootstrap.css",
+                    "~/Content/css/bootstrap-responsive.css",
+                    "~/Content/css/fancybox/jquery.fancybox.css",
+                    "~/Content/css/jcarousel.css",
+                    "~/Content/css/flexslider.css",
+                    "~/Content/css/style.css",
+                    "~/Content/skins/default.css"
+                    ));
+
+            bundles.Add(new StyleBundle("~/template/ico").Include(
+                   "~/ico/apple-touch-icon-144-precomposed.png",
+                   "~/ico/apple-touch-icon-114-precomposed.png",
+                   "~/ico/apple-touch-icon-72-precomposed.png",
+                   "~/ico/apple-touch-icon-57-precomposed.png",
+                   "~/ico/favicon.png"
+                   ));
+
+            #endregion
         }
     }
 }
