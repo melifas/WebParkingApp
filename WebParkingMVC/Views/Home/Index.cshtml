@@ -1,12 +1,17 @@
-﻿<section id="featured">
+﻿
+<section id="featured">
     <!-- start slider -->
     <!-- Slider -->
     <div id="nivo-slider">
         <div class="nivo-slider">
             <!-- Slide #1 image -->
-            <img src="~/Content/img/slides/nivo/bg-1.jpg" alt="" title="#caption-1" />
+
+            @Html.Raw($"<img src='{Url.Content("~/Content/img/slides/nivo/bg-1.jpg")}' />");
+            @Html.Raw($"<img src='{Url.Content("~/Content/img/slides/nivo/bg-2.jpg")}' />");
+            @Html.Raw($"<img src='{Url.Content("~/Content/img/slides/nivo/bg-3.jpg")}' />");
             <!-- Slide #2 image -->
-            <img src="~/Content/img/slides/nivo/bg-2.jpg" alt="" titleSle="#caption-3" />
+            <!-- Slide #2 image  <img src="~/Content/img/slides/nivo/bg-2.jpg" alt="" titleSle="#caption-3" /> -->
+            <!-- Slide #2 image <img src="~/Content/img/slides/nivo/bg-2.jpg" alt="" titleSle="#caption-3" /> /> -->
         </div>
         <div class="container">
             <div class="row">
