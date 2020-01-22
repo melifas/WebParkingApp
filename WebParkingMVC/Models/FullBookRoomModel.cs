@@ -8,12 +8,16 @@ namespace WebParkingMVC.Models
 {
     public class FullBookRoomModel
     {
-        public int Id { get; set; }
+        [Display(Name ="Position")]
         public int ParkingId { get; set; }
+        [Display(Name = "Client Last Name")]
         public int ClientId { get; set; }
+        [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
+        [Display(Name = "End Date Date")]
         public DateTime EndDate { get; set;}    
         public bool CheckedIn { get; set; }
+        [Display(Name = "Total Cost")]
         public decimal TotalPrice { get; set; }
      
         public string FirstName { get; set; }

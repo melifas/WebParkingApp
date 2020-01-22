@@ -20,6 +20,15 @@ namespace LibraryWebParking.Repository
             }
         }
 
+        public List<spBookingDetails_Result> getBookingDetails()
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                List<spBookingDetails_Result>results  = db.spBookingDetails().ToList();
+                return results;
+            }
+        }
+
 
         public List<spParkingWithTypes_Result> getParkingWithTypes()
         {

@@ -250,5 +250,10 @@ namespace LibraryWebParking.Model
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spParkingWithTypes_Result>("spParkingWithTypes");
         }
+    
+        public virtual ObjectResult<spBookingDetails_Result> spBookingDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBookingDetails_Result>("spBookingDetails");
+        }
     }
 }
