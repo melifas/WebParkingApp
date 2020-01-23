@@ -220,6 +220,8 @@
     <Content Include="Content\css\overwrite.css" />
     <Content Include="Content\css\slitslider.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\font\customicon\Icons.svg" />
+    <Content Include="Content\font\fontawesome\fontawesome-webfont.svg" />
     <Content Include="Content\img\avatar.png" />
     <Content Include="Content\img\bodybg\bg1.png" />
     <Content Include="Content\img\bodybg\bg10.png" />
@@ -290,6 +292,8 @@
     <Content Include="Content\img\works\thumbs\image-06.jpg" />
     <Content Include="Content\img\works\thumbs\image-07.jpg" />
     <Content Include="Content\img\works\thumbs\image-08.jpg" />
+    <Content Include="Content\js\google-code-prettify\prettify.css" />
+    <Content Include="Content\js\google-code-prettify\prettify.js" />
     <Content Include="Content\skins\blue.css" />
     <Content Include="Content\skins\default.css" />
     <Content Include="Content\skins\green.css" />
@@ -439,6 +443,13 @@
     <Content Include="font\fontawesome\fontawesome-webfont.ttf" />
     <Content Include="font\fontawesome\fontawesome-webfont.woff" />
     <Content Include="font\fontawesome\FontAwesome.otf" />
+    <Content Include="Content\font\customicon\Icons.eot" />
+    <Content Include="Content\font\customicon\Icons.ttf" />
+    <Content Include="Content\font\customicon\Icons.woff" />
+    <Content Include="Content\font\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\google-code-prettify\prettify.css" />
