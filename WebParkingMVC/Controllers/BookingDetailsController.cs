@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebParkingMVC.Models;
+using FullBookRoomModel = WebParkingMVC.Models.FullBookRoomModel;
 
 namespace WebParkingMVC.Controllers
 {
@@ -31,12 +33,15 @@ namespace WebParkingMVC.Controllers
         // GET: BookingDetails/Create
         public ActionResult CreateBooking()
         {
-            
+            ViewBag.startDate = DateTime.Now.Date;
+            ViewBag.endDate = DateTime.Now.Date.AddDays(3);
             IEnumerable<SelectListItem> Bookings = da.getBookingDetails().Select(m=>new SelectListItem() { Text = m.ParkingNumber, Value = m.Id.ToString() }).ToArray();
             IEnumerable<SelectListItem> Clients = da.getBookingDetails().Select(m => new SelectListItem() { Text = m.LatName, Value = m.Id.ToString() }).ToArray();
             ViewBag.Bookings = Bookings;
             ViewBag.Clients = Clients;
-            return View();
+
+            FullBookRoomModel model = new FullBookRoomModel() { StartDate = new DateTime(), EndDate = new DateTime()};
+            return View(model);
         }
 
         // POST: BookingDetails/Create
