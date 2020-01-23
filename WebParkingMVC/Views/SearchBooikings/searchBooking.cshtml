@@ -52,7 +52,7 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.LatName)    @Html.DisplayFor(modelItem => item.FirstName)
-        </td>       
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>
@@ -65,7 +65,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.CheckedIn)
         </td>
-        
 
         <td>
             @Html.DisplayFor(modelItem => item.Phone)
@@ -76,11 +75,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.ParkingNumber)
         </td>
-       
+
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
-       
+        <td>
+            @Html.ActionLink("See Clients Profile", "Details", "Client", new { @id = item.ClientId }, null)
+
+        </td>
+
     </tr>
         }
 

@@ -26,6 +26,7 @@
           <Property Name="LatName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Parkings">
           <Key>
@@ -80,6 +81,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spBookingDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spBookingInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="clientId" Type="int" Mode="In" />
           <Parameter Name="parkingId" Type="int" Mode="In" />
@@ -105,7 +107,11 @@
         <Function Name="spInsertClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="firstName" Type="nvarchar" Mode="In" />
           <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ImagePath" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="spParkingWithTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="WebParkingDBModelStoreContainer">
           <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
@@ -152,6 +158,7 @@
           <Property Name="Phone" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_Clients" FromRole="Clients" ToRole="Bookings" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Parkings">
           <Key>
@@ -263,13 +270,16 @@
           <FunctionImport Name="spInsertClient" ReturnType="Collection(WebParkingDBModel.spInsertClient_Result)">
             <Parameter Name="firstName" Mode="In" Type="String" />
             <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="ImagePath" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spGetAvailableParkingPositions" ReturnType="Collection(WebParkingDBModel.spGetAvailableParkingPositions_Result)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
             <Parameter Name="roomTypeID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spgetAvailableparkingsType" EntitySet="ParkingTypes" ReturnType="Collection(WebParkingDBModel.ParkingTypes)">
+          <FunctionImport Name="spgetAvailableparkingsType" ReturnType="Collection(WebParkingDBModel.spgetAvailableparkingsTypeCount)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -286,6 +296,8 @@
           <FunctionImport Name="spBookingsCheckIn">
           <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="spParkingWithTypes" ReturnType="Collection(WebParkingDBModel.spParkingWithTypes_Result)" />
+          <FunctionImport Name="spBookingDetails" ReturnType="Collection(WebParkingDBModel.spBookingDetails_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -340,6 +352,35 @@
           <Property Type="String" Name="Desription" Nullable="false" />
           <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
         </ComplexType>
+        <ComplexType Name="spgetAvailableparkingsTypeCount">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Desription" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
+          <Property Type="Int32" Name="remainingPositions" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spParkingWithTypes_Result">
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ParkingTypeId" Nullable="false" />
+          <Property Type="String" Name="Desription" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="spBookingDetails_Result">
+          <Property Type="DateTime" Name="StartDate" Nullable="true" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+          <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Phone" Nullable="true" />
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="Int32" Name="ParkingId" Nullable="true" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="CheckedIn" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -362,6 +403,7 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="WebParkingDBModel.Clients">
               <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LatName" ColumnName="LatName" />
@@ -410,6 +452,15 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spgetAvailableparkingsType" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spgetAvailableparkingsTypeCount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Desription" ColumnName="Desription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="remainingPositions" ColumnName="remainingPositions" />
+              </ComplexTypeMapping>
+            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spBookingInsert" FunctionName="WebParkingDBModel.Store.spBookingInsert" />
           <FunctionImportMapping FunctionImportName="spgetparkings" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType">
@@ -445,6 +496,36 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spBookingsCheckIn" FunctionName="WebParkingDBModel.Store.spBookingsCheckIn" />
+          <FunctionImportMapping FunctionImportName="spParkingWithTypes" FunctionName="WebParkingDBModel.Store.spParkingWithTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spParkingWithTypes_Result">
+                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParkingTypeId" ColumnName="ParkingTypeId" />
+                <ScalarProperty Name="Desription" ColumnName="Desription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBookingDetails" FunctionName="WebParkingDBModel.Store.spBookingDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spBookingDetails_Result">
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="LatName" ColumnName="LatName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CheckedIn" ColumnName="CheckedIn" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

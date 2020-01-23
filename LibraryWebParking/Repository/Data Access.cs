@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace LibraryWebParking.Repository
 {
@@ -19,12 +20,45 @@ namespace LibraryWebParking.Repository
             }
         }
 
+        public List<spBookingDetails_Result> getBookingDetails()
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                List<spBookingDetails_Result>results  = db.spBookingDetails().ToList();
+                return results;
+            }
+        }
+
+
+        public List<spParkingWithTypes_Result> getParkingWithTypes()
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                var results = db.spParkingWithTypes().ToList();
+                return results;
+            }
+        }
+
         public List<ParkingTypes> getParkingsType()
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
                 List<ParkingTypes> parkingsType = db.ParkingTypes.ToList();
                 return parkingsType;
+            }
+        }
+
+        public void AddParking(string ParkingNum,int ParkTypeId)
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                Parkings park = new Parkings()
+                {
+                    ParkingNumber = ParkingNum,
+                    ParkingTypeId = ParkTypeId
+                };
+                db.Parkings.Add(park);
+                db.SaveChanges();
             }
         }
 
@@ -40,14 +74,15 @@ namespace LibraryWebParking.Repository
             }
         }*/
 
-        public List<ParkingTypes> AvailableParkings(DateTime startDate, DateTime endDate)
+        public List<spgetAvailableparkingsTypeCount> AvailableParkings(DateTime startDate, DateTime endDate)
         {
-            List<ParkingTypes> results = null;
+            List<spgetAvailableparkingsTypeCount> parkingTypes = null;
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                results = db.spgetAvailableparkingsType(startDate, endDate).ToList();
-                return results;
+                parkingTypes = db.spgetAvailableparkingsType(startDate, endDate).ToList();
+
+                return parkingTypes;
             }
         }
 
@@ -76,14 +111,14 @@ namespace LibraryWebParking.Repository
         }
 
 
-        public void BookClient(string firstName,string lastName, DateTime startDate, DateTime endDate,int ParkingTypeId) 
+        public void BookClient(string firstName,string lastName, string ImagePath,string email,string Phone ,DateTime startDate, DateTime endDate,int ParkingTypeId) 
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
 
                 ParkingTypes parkingtype =  db.ParkingTypes.Where(x => x.Id == ParkingTypeId).FirstOrDefault();
 
-                spInsertClient_Result client = db.spInsertClient(firstName, lastName).FirstOrDefault();
+                spInsertClient_Result client = db.spInsertClient(firstName, lastName, ImagePath,email,Phone).FirstOrDefault();
 
                 TimeSpan timeStaying =  endDate.Date.Subtract(startDate.Date);
 
@@ -102,6 +137,13 @@ namespace LibraryWebParking.Repository
             }
 
         }
-
+       
+        public Clients ClientDetails(int id) 
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                return db.Clients.Where(x => x.Id == id).FirstOrDefault();               
+            }
+        }
     }
 }
