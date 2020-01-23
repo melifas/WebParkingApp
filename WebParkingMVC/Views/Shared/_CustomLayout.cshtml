@@ -216,10 +216,12 @@
                                             </ul>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="#">Blog <i class="icon-angle-down"></i></a>
+
+                                            @Html.ActionLink("Modify Parkings", "SeeAllParkings", "Parking", null, new { @class = "icon-angle-down" });
                                             <ul class="dropdown-menu">
-                                                <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
-                                                <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
+                                                <li><a href="blog-left-sidebar.html">Modify Bookings</a></li>
+                                                <li>@Html.ActionLink("Modify Parkings", "SeeAllParkings", "Parking")</li>
+                                                <li><a href="blog-right-sidebar.html">Modify Parkings</a></li>
                                                 <li><a href="post-left-sidebar.html">Post left sidebar</a></li>
                                                 <li><a href="post-right-sidebar.html">Post right sidebar</a></li>
                                             </ul>
@@ -239,7 +241,7 @@
         <!-- end header -->
 
 
-      @RenderBody()
+        @RenderBody()
 
 
         <footer>
@@ -332,7 +334,8 @@
     <!-- javascript
       ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-   @Scripts.Render("~/template/js")
-  
+    @Scripts.Render("~/template/js")
+    @RenderSection("scripts", required: false)
+
 </body>
 </html>
