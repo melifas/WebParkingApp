@@ -35,28 +35,28 @@ namespace WebParkingMVC.Controllers
         {
             ViewBag.startDate = DateTime.Now.Date;
             ViewBag.endDate = DateTime.Now.Date.AddDays(3);
-            IEnumerable<SelectListItem> Bookings = da.getBookingDetails().Select(m=>new SelectListItem() { Text = m.ParkingNumber, Value = m.Id.ToString() }).ToArray();
-            IEnumerable<SelectListItem> Clients = da.getBookingDetails().Select(m => new SelectListItem() { Text = m.LatName, Value = m.Id.ToString() }).ToArray();
+            IEnumerable<SelectListItem> Bookings = da.getPositionsNotBooked().Select(m=>new SelectListItem() { Text = m.ParkingNumber, Value = m.Id.ToString() }).ToArray();
+            IEnumerable<SelectListItem> Clients = da.getListofCustomers().Select(m => new SelectListItem() { Text = m.LatName, Value = m.Id.ToString() }).ToArray();
             ViewBag.Bookings = Bookings;
             ViewBag.Clients = Clients;
 
+            
             FullBookRoomModel model = new FullBookRoomModel() { StartDate = new DateTime(), EndDate = new DateTime()};
             return View(model);
         }
 
         // POST: BookingDetails/Create
         [HttpPost]
-        public ActionResult CreateBooking(FormCollection collection)
+        public ActionResult CreateBooking(FullBookRoomModel fullBookRoomModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                da.BookingFromAdmin(fullBookRoomModel.StartDate, fullBookRoomModel.EndDate, fullBookRoomModel.ParkingId,fullBookRoomModel.ClientId);
+                return RedirectToAction("SeeAllBookings", "BookingDetails");
             }
-            catch
+            else
             {
-                return View();
+                return View(fullBookRoomModel);
             }
         }
 

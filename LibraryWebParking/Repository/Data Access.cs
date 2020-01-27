@@ -29,6 +29,15 @@ namespace LibraryWebParking.Repository
             }
         }
 
+        public List<spParkingPositionsNotBooked_Result1> getPositionsNotBooked() 
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                List<spParkingPositionsNotBooked_Result1> result = db.spParkingPositionsNotBooked().ToList();
+                return result;
+            }
+        }
+
 
         public List<spParkingWithTypes_Result> getParkingWithTypes()
         {
@@ -61,6 +70,8 @@ namespace LibraryWebParking.Repository
                 db.SaveChanges();
             }
         }
+
+
 
 
        /* public List<spgetparkings_Result> AvailableParkings(DateTime startDate, DateTime endDate)
@@ -110,6 +121,29 @@ namespace LibraryWebParking.Repository
             
         }
 
+        public void BookingFromAdmin(DateTime startDate, DateTime endDate, int ParkingId,int ClientId) 
+        {
+
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                //ParkingTypes parkingtype = db.ParkingTypes.Where(x => x.Id == ParkingTypeId).FirstOrDefault();
+                TimeSpan timeStaying = endDate.Date.Subtract(startDate.Date);
+
+
+                Bookings booking = new Bookings()
+                {
+                    ClientId = ClientId,
+                    ParkingId = ParkingId,
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    //TotalPrice = timeStaying.Days * parkingtype.Price
+                };
+                db.Bookings.Add(booking);
+                db.SaveChanges();
+
+            }
+        }
+
 
         public void BookClient(string firstName,string lastName, string ImagePath,string email,string Phone ,DateTime startDate, DateTime endDate,int ParkingTypeId) 
         {
@@ -143,6 +177,14 @@ namespace LibraryWebParking.Repository
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
                 return db.Clients.Where(x => x.Id == id).FirstOrDefault();               
+            }
+        }
+
+        public List<Clients> getListofCustomers() 
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                return db.Clients.ToList();
             }
         }
     }
