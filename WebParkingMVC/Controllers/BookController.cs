@@ -33,8 +33,11 @@ namespace WebParkingMVC.Controllers
             }
             BookRoomModel model = new BookRoomModel() { ParkingtypeId = id, startDate = start, endDate = end };
 
-            IEnumerable<SelectListItem> ParkingsTypeList = da.getParkingsType().Select(m => new SelectListItem() { Text = m.Title, Value = m.Id.ToString() }).ToArray();
-            ViewBag.ParkingsTypes = ParkingsTypeList;
+            /*IEnumerable<SelectListItem> ParkingsTypeList = da.getParkingsType().Select(m => new SelectListItem() { Text = m.Title, Value = m.Id.ToString() }).ToArray();
+            ViewBag.ParkingsTypes = ParkingsTypeList;*/
+
+            IEnumerable<SelectListItem> ParkingsPositons = da.getAvailableParkingPositions(start,end,id).Select(m => new SelectListItem() { Text = m.ParkingNumber, Value = m.Id.ToString() }).ToArray();
+            ViewBag.ParkingsTypes = ParkingsPositons;
 
             return View(model);
         }
@@ -53,7 +56,7 @@ namespace WebParkingMVC.Controllers
                 model.ImageFile.SaveAs(fileNme);
 
                 
-                da.BookClient(model.FirstName, model.LastName, model.ImagePath, model.Email, model.Phone, model.startDate, model.endDate, model.ParkingtypeId);
+                da.BookClient(model.ParkingId,model.FirstName, model.LastName, model.ImagePath, model.Email, model.Phone, model.startDate, model.endDate, model.ParkingtypeId);
 
                 ModelState.Clear();
                 //Αποστολή mail ασύγχρονα                

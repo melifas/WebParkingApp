@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "BookRoom";
 
-    IEnumerable<SelectListItem> ParkingsTypeList = ViewBag.ParkingsTypes;
+    IEnumerable<SelectListItem> ParkingsPositons = ViewBag.ParkingsTypes;
 }
 
 <h2>Book a Parking</h2>
@@ -11,14 +11,6 @@
 @using (Html.BeginForm("BookRoom", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ParkingtypeId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.ParkingtypeId, ParkingsTypeList, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ParkingtypeId, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-horizontal">
         <h4>Give Details</h4>
@@ -28,6 +20,14 @@
         <div class="form-group">
             <div class="col-md-10">
                 @Html.HiddenFor(model => model.ParkingtypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ParkingId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ParkingId, ParkingsPositons, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ParkingId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -53,14 +53,7 @@
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })

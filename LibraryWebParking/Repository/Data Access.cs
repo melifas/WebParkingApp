@@ -74,16 +74,15 @@ namespace LibraryWebParking.Repository
 
 
 
-       /* public List<spgetparkings_Result> AvailableParkings(DateTime startDate, DateTime endDate)
+       public List<spGetAvailableParkingPositions_Result> getAvailableParkingPositions(DateTime start,DateTime end,int ParkingTypeiId) 
         {
-            List<spgetparkings_Result> results = null;
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                results = db.spgetAvailableparkingsType(startDate, endDate).ToList();
-                return results;
+                List<spGetAvailableParkingPositions_Result> positionsempty =  db.spGetAvailableParkingPositions(start, end, ParkingTypeiId).ToList();
+                return positionsempty;
             }
-        }*/
+        }
 
         public List<spgetAvailableparkingsTypeCount> AvailableParkings(DateTime startDate, DateTime endDate)
         {
@@ -92,7 +91,6 @@ namespace LibraryWebParking.Repository
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
                 parkingTypes = db.spgetAvailableparkingsType(startDate, endDate).ToList();
-
                 return parkingTypes;
             }
         }
@@ -145,7 +143,7 @@ namespace LibraryWebParking.Repository
         }
 
 
-        public void BookClient(string firstName,string lastName, string ImagePath,string email,string Phone ,DateTime startDate, DateTime endDate,int ParkingTypeId) 
+        public void BookClient(int ParkingId,string firstName,string lastName, string ImagePath,string email,string Phone ,DateTime startDate, DateTime endDate,int ParkingTypeId) 
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
@@ -156,12 +154,12 @@ namespace LibraryWebParking.Repository
 
                 TimeSpan timeStaying =  endDate.Date.Subtract(startDate.Date);
 
-                List<spGetAvailableParkingPositions_Result> availableParkingPositions =  db.spGetAvailableParkingPositions(startDate, endDate, ParkingTypeId).ToList();
+               // List<spGetAvailableParkingPositions_Result> availableParkingPositions =  db.spGetAvailableParkingPositions(startDate, endDate, ParkingTypeId).ToList();
 
                 Bookings booking = new Bookings()
                 {
                     ClientId = client.Id,
-                    ParkingId = availableParkingPositions.First().Id,
+                    ParkingId = ParkingId,
                     StartDate = startDate,
                     EndDate = endDate,
                     TotalPrice = timeStaying.Days * parkingtype.Price
