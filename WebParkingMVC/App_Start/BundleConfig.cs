@@ -25,6 +25,23 @@ namespace WebParkingMVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            #region Template Design
+
+            bundles.Add(new ScriptBundle("~/template/js").Include(
+                        "~/Scripts/jquery.validate*"));
+
+
+            bundles.Add(new StyleBundle("~/template/css").Include(
+                      "~/ Content / css / bootstrap.min.css",
+                      "~/Content/css/font-awesome.min.css",
+                      "~/Content/css/animate.css",
+                      "~/Content/css/animate.min.css",
+                      "~/Content/css/style.css"
+
+                      ));
+
+            #endregion
         }
     }
 }
