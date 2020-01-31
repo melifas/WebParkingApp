@@ -5,6 +5,8 @@ namespace WebParkingMVC
 {
     public class BundleConfig
     {
+        
+
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -29,16 +31,18 @@ namespace WebParkingMVC
             #region Template Design
 
             bundles.Add(new ScriptBundle("~/template/js").Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.js",
+                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/wow.min.js"                        
+                        ));
 
 
             bundles.Add(new StyleBundle("~/template/css").Include(
-                      "~/ Content / css / bootstrap.min.css",
+                      "~/Content/css/bootstrap.min.css",
                       "~/Content/css/font-awesome.min.css",
                       "~/Content/css/animate.css",
                       "~/Content/css/animate.min.css",
-                      "~/Content/css/style.css"
-
+                      "~/Content/css/style.css"                      
                       ));
 
             #endregion
