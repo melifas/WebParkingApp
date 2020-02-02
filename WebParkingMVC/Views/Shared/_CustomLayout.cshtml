@@ -29,8 +29,9 @@
                 <div class="navbar-collapse collapse">
                     <div class="menu">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation"><a href="index.html" class="active">Home</a></li>
-                            <li role="presentation"><a href="about.html">About Us</a></li>
+                            <li role="presentation">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li role="presentation">@Html.ActionLink("About", "About", "Home")</li>
+                            <li role="presentation">@Html.ActionLink("Search Availability", "AvailableParkingTypes", "Home")</li>
                             <li role="presentation"><a href="services.html">Services</a></li>
                             <li role="presentation"><a href="gallery.html">Gallery</a></li>
                             <li role="presentation"><a href="contact.html">Contact</a></li>
