@@ -18,6 +18,15 @@ namespace WebParkingMVC.Models
         }
     }
 
+    //Code Added by Me
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole(): base() { }
+        public ApplicationRole(string name) : base(name) { }
+        public string Description { get; set; }
+    }
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

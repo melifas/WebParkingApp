@@ -106,4 +106,88 @@ namespace WebParkingMVC
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+
+    //Code ADDED BY Me
+    public class ApplicationRoleManager : RoleManager<ApplicationRole>
+    {
+        public ApplicationRoleManager(IRoleStore<ApplicationRole, string> roleStore)
+            :base(roleStore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options,IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<ApplicationRole>(context.Get<ApplicationDbContext>()));
+        }
+
+    }
+
+
+    //code added by me
+    public class ApplicationDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
+    {
+        protected override void Seed(ApplicationDbContext context)
+        {
+            InitializeIdentityForEF(context);
+            base.Seed(context);
+        }
+
+        public static void InitializeIdentityForEF(ApplicationDbContext db)
+        {
+            var userManger = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
+
+            const string userName = "admin@unipi.gr";
+            const string Password = "P@ssw0rd";
+
+            const string roleAdmin = "Admin";
+            const string roleManagers = "Manager";
+            const string roleSimpleUser = "User";
+
+
+            //Create Role Managers if Not Exist
+            var role = roleManager.FindByName(roleManagers);
+            if (role == null)
+            {
+                role = new ApplicationRole(roleManagers);
+                var roleresult = roleManager.Create(role);
+            }
+
+            //Create Role Simple User if Not Exist
+             role = roleManager.FindByName(roleSimpleUser);
+            if (role == null)
+            {
+                role = new ApplicationRole(roleSimpleUser);
+                var roleresult = roleManager.Create(role);
+            }
+
+            //Create Role Admin User if Not Exist
+            role = roleManager.FindByName(roleAdmin);
+            if (role == null)
+            {
+                role = new ApplicationRole(roleAdmin);
+                var roleresult = roleManager.Create(role);
+            }
+
+            //Create userName admin if not exist
+            var user = userManger.FindByName(userName);
+            if (user==null)
+            {
+                user = new ApplicationUser { UserName = userName, Email = userName };
+                var result = userManger.Create(user, Password);
+                result = userManger.SetLockoutEnabled(user.Id, false);
+            }
+
+            //Add user Admin to Role Admin if not already Added
+            var rolesForUser = userManger.GetRoles(user.Id);
+            if (!rolesForUser.Contains(role.Name))
+            {
+                var result = userManger.AddToRole(user.Id, role.Name);
+            }
+
+
+
+
+        }
+    }
 }
