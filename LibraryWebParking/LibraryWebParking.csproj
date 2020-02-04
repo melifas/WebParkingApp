@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModelMetadata\spgetAvailableparkingsTypeCount.cs" />
+    <Compile Include="ModelMetadata\spParkingWithTypes_Result.cs" />
     <Compile Include="Model\Bookings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
