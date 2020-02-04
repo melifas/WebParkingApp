@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryWebParking.ModelMetadata
+namespace LibraryWebParking.Model
 {
+
     [MetadataType(typeof(spgetAvailableparkingsTypeCount_metadata))]
     public partial class spgetAvailableparkingsTypeCount
     {

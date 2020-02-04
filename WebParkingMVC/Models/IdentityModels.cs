@@ -21,7 +21,7 @@ namespace WebParkingMVC.Models
     //Code Added by Me
     public class ApplicationRole : IdentityRole
     {
-        public ApplicationRole(): base() { }
+        public ApplicationRole() : base() { }
         public ApplicationRole(string name) : base(name) { }
         public string Description { get; set; }
     }
@@ -34,19 +34,24 @@ namespace WebParkingMVC.Models
         {
         }
 
+        static ApplicationDbContext()
+        {
+            Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
+        }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<LibraryWebParking.Model.Parkings> Parkings { get; set; }
+        //public System.Data.Entity.DbSet<LibraryWebParking.Model.Parkings> Parkings { get; set; }
 
-        public System.Data.Entity.DbSet<LibraryWebParking.Model.ParkingTypes> ParkingTypes { get; set; }
+        //public System.Data.Entity.DbSet<LibraryWebParking.Model.ParkingTypes> ParkingTypes { get; set; }
 
-        public System.Data.Entity.DbSet<LibraryWebParking.Model.spgetAvailableparkingsType_Result> spgetAvailableparkingsType_Result { get; set; }
+        //public System.Data.Entity.DbSet<LibraryWebParking.Model.spgetAvailableparkingsType_Result> spgetAvailableparkingsType_Result { get; set; }
 
-        public System.Data.Entity.DbSet<WebParkingMVC.Models.BookRoomModel> BookRooms { get; set; }
+        //public System.Data.Entity.DbSet<WebParkingMVC.Models.BookRoomModel> BookRooms { get; set; }
 
-        public System.Data.Entity.DbSet<LibraryWebParking.Model.FullBookRoomModel> FullBookRoomModels { get; set; }
+        //public System.Data.Entity.DbSet<LibraryWebParking.Model.FullBookRoomModel> FullBookRoomModels { get; set; }
     }
 }

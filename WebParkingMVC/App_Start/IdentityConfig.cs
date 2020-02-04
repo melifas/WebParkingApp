@@ -40,7 +40,7 @@ namespace WebParkingMVC
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -81,7 +81,7 @@ namespace WebParkingMVC
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
@@ -111,11 +111,11 @@ namespace WebParkingMVC
     public class ApplicationRoleManager : RoleManager<ApplicationRole>
     {
         public ApplicationRoleManager(IRoleStore<ApplicationRole, string> roleStore)
-            :base(roleStore)
+            : base(roleStore)
         {
         }
 
-        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options,IOwinContext context)
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
         {
             return new ApplicationRoleManager(new RoleStore<ApplicationRole>(context.Get<ApplicationDbContext>()));
         }
@@ -128,21 +128,21 @@ namespace WebParkingMVC
     {
         protected override void Seed(ApplicationDbContext context)
         {
-            InitializeIdentityForEF(context);
+            InitializeIdentityData(context);
             base.Seed(context);
         }
 
-        public static void InitializeIdentityForEF(ApplicationDbContext db)
+        public static void InitializeIdentityData(ApplicationDbContext db)
         {
             var userManger = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
 
-            const string userName = "admin@unipi.gr";
-            const string Password = "P@ssw0rd";
+            string userName = "admin@unipi.gr";
+            string Password = "P@ssw0rd";
 
-            const string roleAdmin = "Admin";
-            const string roleManagers = "Manager";
-            const string roleSimpleUser = "User";
+            string roleAdmin = "Admin";
+            string roleManagers = "Manager";
+            string roleSimpleUser = "User";
 
 
             //Create Role Managers if Not Exist
@@ -154,7 +154,7 @@ namespace WebParkingMVC
             }
 
             //Create Role Simple User if Not Exist
-             role = roleManager.FindByName(roleSimpleUser);
+            role = roleManager.FindByName(roleSimpleUser);
             if (role == null)
             {
                 role = new ApplicationRole(roleSimpleUser);
@@ -171,7 +171,7 @@ namespace WebParkingMVC
 
             //Create userName admin if not exist
             var user = userManger.FindByName(userName);
-            if (user==null)
+            if (user == null)
             {
                 user = new ApplicationUser { UserName = userName, Email = userName };
                 var result = userManger.Create(user, Password);

@@ -8,6 +8,8 @@ namespace WebParkingMVC.Models
 {
     public class BookRoomModel
     {
+        public int? Id { get; set; }
+
         public int ParkingtypeId { get; set; }
 
         [Required]
