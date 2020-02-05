@@ -6,22 +6,22 @@
     IEnumerable<SelectListItem> ParkingsTypeList = ViewBag.ParkingsTypes;
 }
 
-<h2>Book a Parking</h2>
+<h2>Ενοικίαση Θέσης</h2>
 
 @using (Html.BeginForm("BookRoom", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ParkingtypeId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.ParkingtypeId, ParkingsTypeList, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ParkingtypeId, "", new { @class = "text-danger" })
-        </div>
-    </div>
+   // <div class="form-group">
+      //  @Html.LabelFor(model => model.ParkingtypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+       // <div class="col-md-10">
+        //    @Html.DropDownListFor(model => model.ParkingtypeId, ParkingsTypeList, new { @class = "form-control" })
+        //    @Html.ValidationMessageFor(model => model.ParkingtypeId, "", new { @class = "text-danger" })
+       // </div>
+   // </div>
 
     <div class="form-horizontal">
-        <h4>Give Details</h4>
+        <h4>Δώστε μας τα Στοιχεία σας</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 

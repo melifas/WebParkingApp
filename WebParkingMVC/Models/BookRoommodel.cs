@@ -13,20 +13,23 @@ namespace WebParkingMVC.Models
         public int ParkingtypeId { get; set; }
 
         [Required]
-        [Display(Name = "Start Date")]  
+        [Display(Name = "Απο")]  
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime startDate { get; set; }
 
         [Required]
-        [Display(Name = "End Date")]
+        [Display(Name = "Εως")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime endDate { get; set; }
 
         [Required]
+        [Display(Name = "Όνομα")]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Επίθετο")]
         public string LastName { get; set; }
+        [Display(Name = "Τηλέφωνο")]
         public string Phone { get; set; }
         [Required]
         public string Email { get; set; }

@@ -15,10 +15,13 @@ namespace LibraryWebParking.Model
         internal class spgetAvailableparkingsTypeCount_metadata
         {
             public int Id { get; set; }
+            [DisplayName("Τύπος Οχήματος")]
             public string Title { get; set; }
+            [DisplayName("Περιγραφή")]
             public string Desription { get; set; }
+            [DisplayName("Ημερήσια Τιμή")]
             public decimal Price { get; set; }
-            [DisplayName("Free Postitions")]
+            [DisplayName("Διαθέσιμες Θέσεις")]
             public Nullable<int> remainingPositions { get; set; }
         }
 

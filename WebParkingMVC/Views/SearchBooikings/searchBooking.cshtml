@@ -4,12 +4,12 @@
     ViewBag.Title = "searchBooking";
 }
 
-<h2>Search for Client</h2>
+<h2>Αναζήτηση Κράτησης</h2>
 
 @using (Html.BeginForm("searchBooking", "SearchBooikings", FormMethod.Post))
 {
-    <input type="text" name="lastName" value="Enter Last Name...." />
-    <input type="submit" value="SearchBooking" />
+    <input type="text" name="lastName" value="Επώνυμο...." />
+    <input type="submit" value="Αναζήτηση" />
 
 
     <table class="table">
@@ -80,7 +80,7 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.ActionLink("See Clients Profile", "Details", "Client", new { @id = item.ClientId }, null)
+            @Html.ActionLink("Σελίδα Πελάτη", "Details", "Client", new { @id = item.ClientId }, null)
 
         </td>
 

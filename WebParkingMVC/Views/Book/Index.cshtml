@@ -1,7 +1,11 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Sucess</h2>
-
+﻿<div class="jumbotron text-center">
+    <h1 class="display-3">Σας ευχαριστούμε για την Κράτηση</h1>
+    <p class="lead"><strong>Παρακαλώ ελένξτε το mail σας</strong> για τις λεπτομέρειες της κράτησης.</p>
+    <hr>
+    <p>
+        Αντιμετωπίζετε κάποιο πρόβλημα?@Html.ActionLink("Επικοινωνία", "Contact", "Home")
+    </p>
+    <p class="lead">
+        <a class="btn btn-primary btn-sm" href="@Url.Action("Index", "Home")" role="button">Συνέχεια στην κεντρική σελίδα</a>
+    </p>
+</div>

@@ -107,7 +107,7 @@ namespace WebParkingMVC
         }
     }
 
-    //Code ADDED BY Me
+    //Code ADDED for ApplicationRole Manager. Then should add one line at Startup.Auth or else no roles will be created
     public class ApplicationRoleManager : RoleManager<ApplicationRole>
     {
         public ApplicationRoleManager(IRoleStore<ApplicationRole, string> roleStore)
@@ -123,7 +123,7 @@ namespace WebParkingMVC
     }
 
 
-    //code added by me
+    //Code Added for Application Initialize entity data to db
     public class ApplicationDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)

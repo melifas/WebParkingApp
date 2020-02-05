@@ -8,13 +8,13 @@
 
 }
 
-<h2>Available Parkings</h2>
+<h2>Διαθεσιμότητα Θέσεων</h2>
 
 @using (Html.BeginForm("AvailableParkingTypes", "Home", FormMethod.Post))
 {
     <input type="date" name="startDate" value="@startDate" />
     <input type="date" name="endDate" value="@endDate" />
-    <input type="submit" value="See available Parkings" />
+    <input type="submit" value="Έλεγχος" />
 
     <table class="table  table-hover">
         <tr>
@@ -48,7 +48,7 @@
             @Html.DisplayFor(modelItem => parkingType.remainingPositions)
         </td>
         <td>
-            @Html.ActionLink("Book Now", "BookRoom", "Book", new { @id = parkingType.Id, @start = startDate, @end = endDate }, null)
+            @Html.ActionLink("Κάνε Κράτηση", "BookRoom", "Book", new { @id = parkingType.Id, @start = startDate, @end = endDate }, null)
 
         </td>
     </tr>

@@ -21,6 +21,7 @@ namespace LibraryWebParking.Model
         public Nullable<decimal> TotalPrice { get; set; }
         public Nullable<bool> CheckedIn { get; set; }
         public string FirstName { get; set; }
+
         public string LatName { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
