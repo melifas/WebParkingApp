@@ -71,19 +71,18 @@ namespace LibraryWebParking.Repository
             }
         }
 
-
-
-
-       /* public List<spgetparkings_Result> AvailableParkings(DateTime startDate, DateTime endDate)
+        public List<spGetAvailableParkingPositions_Result> getAvailableParkingPositions(DateTime start , DateTime end , int ParkingTypeId)
         {
-            List<spgetparkings_Result> results = null;
-
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                results = db.spgetAvailableparkingsType(startDate, endDate).ToList();
-                return results;
+                List<spGetAvailableParkingPositions_Result> positionsempty =  db.spGetAvailableParkingPositions(start, end, ParkingTypeId).ToList();
+                return positionsempty;
             }
-        }*/
+        }
+
+
+
+
 
         public List<spgetAvailableparkingsTypeCount> AvailableParkings(DateTime startDate, DateTime endDate)
         {

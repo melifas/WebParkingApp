@@ -8,7 +8,8 @@ namespace WebParkingMVC.Models
 {
     public class BookRoomModel
     {
-        public int? Id { get; set; }
+        [Display(Name ="Επιλογή Θέσης")]
+        public int ParkingId { get; set; }
 
         public int ParkingtypeId { get; set; }
 

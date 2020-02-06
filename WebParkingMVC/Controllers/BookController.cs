@@ -32,9 +32,10 @@ namespace WebParkingMVC.Controllers
                 Response.Redirect("~/Home/SearchAvalilableParkingTypes");
             }
             BookRoomModel model = new BookRoomModel() { ParkingtypeId = id, startDate = start, endDate = end };
+            
 
-            IEnumerable<SelectListItem> ParkingsTypeList = da.getParkingsType().Select(m => new SelectListItem() { Text = m.Title, Value = m.Id.ToString() }).ToArray();
-            ViewBag.ParkingsTypes = ParkingsTypeList;
+            IEnumerable<SelectListItem> ParkingsPositons = da.getAvailableParkingPositions(start, end, id).Select(m => new SelectListItem() { Text = m.ParkingNumber, Value = m.Id.ToString() }).ToArray();
+            ViewBag.ParkingsTypes = ParkingsPositons;
 
             return View(model);
         }
