@@ -137,8 +137,13 @@ namespace WebParkingMVC
             var userManger = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
 
+            //Admins Credential
             string userName = "admin@unipi.gr";
             string Password = "P@ssw0rd";
+
+            //Managres Credential
+            string ManagerUserName = "manager@unipi.gr";
+            string ManagerPassword = "qwerty";
 
             string roleAdmin = "Admin";
             string roleManagers = "Manager";
@@ -185,8 +190,7 @@ namespace WebParkingMVC
                 var result = userManger.AddToRole(user.Id, role.Name);
             }
 
-
-
+           
 
         }
     }
