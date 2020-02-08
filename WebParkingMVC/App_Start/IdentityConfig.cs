@@ -149,31 +149,31 @@ namespace WebParkingMVC
             string roleManagers = "Manager";
             string roleSimpleUser = "User";
 
-
+//-------------------Create Roles-------------------------------------------------//
             //Create Role Managers if Not Exist
-            var role = roleManager.FindByName(roleManagers);
-            if (role == null)
+            var roleforManager = roleManager.FindByName(roleManagers);
+            if (roleforManager == null)
             {
-                role = new ApplicationRole(roleManagers);
-                var roleresult = roleManager.Create(role);
+                roleforManager = new ApplicationRole(roleManagers);
+                var roleresult = roleManager.Create(roleforManager);
             }
 
             //Create Role Simple User if Not Exist
-            role = roleManager.FindByName(roleSimpleUser);
-            if (role == null)
+             var roleUser = roleManager.FindByName(roleSimpleUser);
+            if (roleUser == null)
             {
-                role = new ApplicationRole(roleSimpleUser);
-                var roleresult = roleManager.Create(role);
+                roleUser = new ApplicationRole(roleSimpleUser);
+                var roleresult = roleManager.Create(roleUser);
             }
 
             //Create Role Admin User if Not Exist
-            role = roleManager.FindByName(roleAdmin);
-            if (role == null)
+            var roleAdmininstrator = roleManager.FindByName(roleAdmin);
+            if (roleAdmininstrator == null)
             {
-                role = new ApplicationRole(roleAdmin);
-                var roleresult = roleManager.Create(role);
+                roleAdmininstrator = new ApplicationRole(roleAdmin);
+                var roleresult = roleManager.Create(roleAdmininstrator);
             }
-
+//-----------------------------------------------------------------------------------------//
             //Create userName admin if not exist
             var user = userManger.FindByName(userName);
             if (user == null)
@@ -184,13 +184,29 @@ namespace WebParkingMVC
             }
 
             //Add user Admin to Role Admin if not already Added
-            var rolesForUser = userManger.GetRoles(user.Id);
-            if (!rolesForUser.Contains(role.Name))
+            var rolesForAdminUser = userManger.GetRoles(user.Id);
+            if (!rolesForAdminUser.Contains(roleAdmininstrator.Name))
             {
-                var result = userManger.AddToRole(user.Id, role.Name);
+                var result = userManger.AddToRole(user.Id, roleAdmininstrator.Name);
             }
 
-           
+
+            //Create userName manager if not exist
+            var manager = userManger.FindByName(ManagerUserName);
+            if (manager == null)
+            {
+                manager = new ApplicationUser { UserName = ManagerUserName, Email = ManagerUserName };
+                var result = userManger.Create(manager, ManagerPassword);
+                result = userManger.SetLockoutEnabled(manager.Id, false);
+            }
+
+
+            //Add user Manager to Role Manager if not already Added
+            var rolesForManager = userManger.GetRoles(user.Id);
+            if (!rolesForManager.Contains(roleforManager.Name))
+            {
+                var result = userManger.AddToRole(manager.Id, roleforManager.Name);
+            }
 
         }
     }

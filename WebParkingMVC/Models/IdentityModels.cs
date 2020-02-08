@@ -43,15 +43,6 @@ namespace WebParkingMVC.Models
         {
             return new ApplicationDbContext();
         }
-
-        //public System.Data.Entity.DbSet<LibraryWebParking.Model.Parkings> Parkings { get; set; }
-
-        //public System.Data.Entity.DbSet<LibraryWebParking.Model.ParkingTypes> ParkingTypes { get; set; }
-
-        //public System.Data.Entity.DbSet<LibraryWebParking.Model.spgetAvailableparkingsType_Result> spgetAvailableparkingsType_Result { get; set; }
-
-        //public System.Data.Entity.DbSet<WebParkingMVC.Models.BookRoomModel> BookRooms { get; set; }
-
-        //public System.Data.Entity.DbSet<LibraryWebParking.Model.FullBookRoomModel> FullBookRoomModels { get; set; }
+       
     }
 }
