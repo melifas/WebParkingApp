@@ -34,19 +34,18 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
 
-                   
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Τροποποίηση Κρατήσεων<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Τροποποίηση Parking", "SeeAllParkings", "Parking")</li>
-                            <li>@Html.ActionLink("Τροποποίηση Κρατήσεων", "SeeAllBookings", "BookingDetails")</li>
-                        </ul>
-                    </li>
-
-
-                   
-                </ul>
+                    @if ((User.IsInRole("Admin")))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Τροποποίηση Κρατήσεων<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Τροποποίηση Parking", "SeeAllParkings", "Parking")</li>
+                                <li>@Html.ActionLink("Τροποποίηση Κρατήσεων", "SeeAllBookings", "BookingDetails")</li>
+                            </ul>
+                        </li>
+                    }
+                    </ul>
                 @Html.Partial("_LoginPartial")
 
 

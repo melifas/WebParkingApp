@@ -143,7 +143,7 @@ namespace WebParkingMVC
 
             //Managres Credential
             string ManagerUserName = "manager@unipi.gr";
-            string ManagerPassword = "qwerty";
+            string ManagerPassword = "P@ssw0rd";
 
             string roleAdmin = "Admin";
             string roleManagers = "Manager";
@@ -189,7 +189,7 @@ namespace WebParkingMVC
             {
                 var result = userManger.AddToRole(user.Id, roleAdmininstrator.Name);
             }
-
+//-----------------------------------------------------------------------------------------------------//
 
             //Create userName manager if not exist
             var manager = userManger.FindByName(ManagerUserName);
