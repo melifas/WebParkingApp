@@ -3,8 +3,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using WebParkingMVC.Facebook;
 using WebParkingMVC.Models;
 
 namespace WebParkingMVC
@@ -56,9 +58,18 @@ namespace WebParkingMVC
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            /*var facebookOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "483916042294807",
+                AppSecret = "85d1d14c3f2f79582d4061abbdc34045",
+                BackchannelHttpHandler = new FacebookBackChannelHandler(),
+                UserInformationEndpoint = ""
+
+            };*/
+
+            app.UseFacebookAuthentication(
+               appId: "483916042294807",
+               appSecret: "85d1d14c3f2f79582d4061abbdc34045");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
