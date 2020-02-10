@@ -102,7 +102,8 @@ namespace WebParkingMVC.Controllers
             {
                 using (WebParkingDBContex db = new WebParkingDBContex())
                 {
-                    Parkings parking = db.Parkings.Where(x => x.Id == id).FirstOrDefault();
+                    Parkings parking = db.Parkings.Single(x => x.Id == id);
+                    //db.Entry(parking).Collection(a => a.ParkingTypeId).Load();
                     Bookings bookings = db.Bookings.Where(c => c.ParkingId == parking.Id).FirstOrDefault();
 
                     if (parking.Id == bookings.ParkingId)
