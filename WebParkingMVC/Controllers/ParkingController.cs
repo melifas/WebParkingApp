@@ -2,7 +2,6 @@
 using LibraryWebParking.Repository;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,11 +18,11 @@ namespace WebParkingMVC.Controllers
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-
+                
                 return View(da.getParkingWithTypes());
             }
 
-
+           
         }
 
         // GET: Parking/Details/5
@@ -45,17 +44,17 @@ namespace WebParkingMVC.Controllers
         // POST: Parking/Create
         [HttpPost]
         public ActionResult Create(ParkingModel parkingModel)
-        {
+        {           
             if (ModelState.IsValid)
             {
-                da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
-                return RedirectToAction("SeeAllParkings", "Parking");
+                da.AddParking(parkingModel.ParkingNumber,parkingModel.ParkingTypeId);
+                 return RedirectToAction("SeeAllParkings", "Parking");
             }
             else
             {
                 return View(parkingModel);
             }
-
+            
         }
 
 
@@ -84,15 +83,15 @@ namespace WebParkingMVC.Controllers
         // GET: Parking/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (id == null) 
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                return View(db.Parkings.Where(x => x.Id == id).FirstOrDefault());
+                return View(db.Parkings.Where(x=>x.Id==id).FirstOrDefault());
             }
-
+            
         }
 
         // POST: Parking/Delete/5
@@ -103,35 +102,31 @@ namespace WebParkingMVC.Controllers
             {
                 using (WebParkingDBContex db = new WebParkingDBContex())
                 {
-                    Parkings p = db.Parkings
-                        .Include(m => m.Bookings)
-                        .Where(m => m.Id == id)
-                        .FirstOrDefault();
+                    Parkings parking = db.Parkings.Single(x => x.Id == id);
+                    //db.Entry(parking).Collection(a => a.ParkingTypeId).Load();
+                    Bookings bookings = db.Bookings.Where(c => c.ParkingId == parking.Id).FirstOrDefault();
 
-                    if (p != null)
+                    if (parking.Id == bookings.ParkingId)
                     {
-                        if (p.Bookings.Count > 0)
-                        {
-                            ViewBag.Message = "Cannot Delete a Parking Position when it is Booked ";
 
-                            return View();
-                        }
-                        else
-                        {
-                            db.Parkings.Remove(p);
-                            db.SaveChanges();
-                            return RedirectToAction("SeeAllParkings", "Parking");
-                        }
+                        ViewBag.Message = "Cannot Delete a Parking Position when it is Booked ";
+
+                        return View();
                     }
+                    else
+                    {
+                        db.Parkings.Remove(parking);
+                        db.SaveChanges();
+                        return RedirectToAction("SeeAllParkings", "Parking");                        
+                    }
+                    
                 }
-
+                
             }
             catch
             {
-
-            }
-
-            return View();
+                return View();
+            }            
         }
     }
 }
