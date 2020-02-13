@@ -2,6 +2,7 @@
 using LibraryWebParking.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -95,38 +96,41 @@ namespace WebParkingMVC.Controllers
         }
 
         // POST: Parking/Delete/5
-        [HttpPost]
         public ActionResult Delete(int id)
         {
             try
             {
                 using (WebParkingDBContex db = new WebParkingDBContex())
                 {
-                    Parkings parking = db.Parkings.Single(x => x.Id == id);
-                    //db.Entry(parking).Collection(a => a.ParkingTypeId).Load();
-                    Bookings bookings = db.Bookings.Where(c => c.ParkingId == parking.Id).FirstOrDefault();
+                    Parkings p = db.Parkings
+                        .Include(m => m.Bookings)
+                        .Where(m => m.Id == id)
+                        .FirstOrDefault();
 
-                    if (parking.Id == bookings.ParkingId)
+                    if (p != null)
                     {
+                        if (p.Bookings.Count > 0)
+                        {
+                            ViewBag.Message = "Cannot Delete a Parking Position when it is Booked ";
 
-                        ViewBag.Message = "Cannot Delete a Parking Position when it is Booked ";
-
-                        return View();
+                            return View();
+                        }
+                        else
+                        {
+                            db.Parkings.Remove(p);
+                            db.SaveChanges();
+                            return RedirectToAction("SeeAllParkings", "Parking");
+                        }
                     }
-                    else
-                    {
-                        db.Parkings.Remove(parking);
-                        db.SaveChanges();
-                        return RedirectToAction("SeeAllParkings", "Parking");                        
-                    }
-                    
                 }
-                
+
             }
             catch
             {
-                return View();
-            }            
+
+            }
+
+            return View();
         }
     }
 }
