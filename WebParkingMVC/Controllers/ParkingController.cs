@@ -96,6 +96,7 @@ namespace WebParkingMVC.Controllers
         }
 
         // POST: Parking/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             try
