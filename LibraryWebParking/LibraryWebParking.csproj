@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ModelMetadata\Clients.cs" />
     <Compile Include="ModelMetadata\FullBookRoomModel.cs" />
+    <Compile Include="ModelMetadata\Parkings.cs" />
     <Compile Include="ModelMetadata\spgetAvailableparkingsTypeCount.cs" />
     <Compile Include="ModelMetadata\spParkingWithTypes_Result.cs" />
     <Compile Include="Model\Bookings.cs">

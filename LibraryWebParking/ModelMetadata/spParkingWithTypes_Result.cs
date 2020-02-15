@@ -12,9 +12,9 @@ namespace LibraryWebParking.Model
     {
         internal class spgetAvailableparkingsTypeCount_metadata
         {
-            [Display(Name ="Parking Number")]
+            [Display(Name ="Αριθμός Θέσης")]
             public string ParkingNumber { get; set; }
-            [Display(Name ="Type of Car")]
+            [Display(Name ="Τύπος Οχήματος")]
             public string Title { get; set; }
             public int Id { get; set; }
             public int ParkingTypeId { get; set; }

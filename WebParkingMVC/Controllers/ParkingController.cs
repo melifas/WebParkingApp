@@ -48,14 +48,26 @@ namespace WebParkingMVC.Controllers
         {           
             if (ModelState.IsValid)
             {
-                da.AddParking(parkingModel.ParkingNumber,parkingModel.ParkingTypeId);
-                 return RedirectToAction("SeeAllParkings", "Parking");
+                using (WebParkingDBContex db = new WebParkingDBContex())
+                {
+                   List<Parkings> parkings = db.Parkings.ToList();
+
+                    foreach (var park in parkings)
+                    {
+                        if (park.ParkingNumber!=parkingModel.ParkingNumber)
+                        {
+                            da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
+                            return RedirectToAction("SeeAllParkings", "Parking");                           
+                        }                        
+                    }
+
+                }
             }
             else
             {
                 return View(parkingModel);
             }
-            
+            return View(parkingModel);
         }
 
 
@@ -112,7 +124,7 @@ namespace WebParkingMVC.Controllers
                     {
                         if (p.Bookings.Count > 0)
                         {
-                            ViewBag.Message = "Cannot Delete a Parking Position when it is Booked ";
+                            ViewBag.Message = "Αδυναμία διαγραφής Θέσης όταν υπάρχει κράτηση γι αυτη";
 
                             return View();
                         }
