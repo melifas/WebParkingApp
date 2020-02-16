@@ -50,23 +50,29 @@ namespace WebParkingMVC.Controllers
             {
                 using (WebParkingDBContex db = new WebParkingDBContex())
                 {
-                   List<Parkings> parkings = db.Parkings.ToList();
-
-                    foreach (var park in parkings)
+                    var parkings = new Parkings();
+                    if (parkingModel.ParkingNumber==null)
                     {
-                        if (park.ParkingNumber!=parkingModel.ParkingNumber)
-                        {
-                            da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
-                            return RedirectToAction("SeeAllParkings", "Parking");                           
-                        }                        
+                        da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
                     }
+                    else
+                    {
+                        int parkingsId = 0;
+                        bool result = int.TryParse(parkingModel.ParkingNumber.ToString(), out parkingsId);
+                        parkings = db.Parkings.FirstOrDefault(x => x.Id == parkingsId);
+                        if (parkings!=null)
+                        {
+                            ModelState.AddModelError("", "Already Exist");
+                            return View(parkingModel);
+                        }
+                    }
+
+                   /* da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
+                    return RedirectToAction("SeeAllParkings", "Parking");*/                   
 
                 }
             }
-            else
-            {
-                return View(parkingModel);
-            }
+            
             return View(parkingModel);
         }
 

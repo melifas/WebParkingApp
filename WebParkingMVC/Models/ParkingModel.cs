@@ -7,6 +7,7 @@ namespace WebParkingMVC.Models
 {
     public class ParkingModel
     {
+        
         public string ParkingNumber { get; set; }
         public int ParkingTypeId { get; set; }
     }
