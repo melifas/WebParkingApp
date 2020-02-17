@@ -26,6 +26,18 @@ namespace WebParkingMVC.Controllers
            
         }
 
+
+        public Parkings FindParking(string PNumber)
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+
+                Parkings p = da.FindParking(PNumber);
+                return p;
+            }
+
+        }
+
         // GET: Parking/Details/5
         public ActionResult Details(int id)
         {
@@ -50,29 +62,19 @@ namespace WebParkingMVC.Controllers
             {
                 using (WebParkingDBContex db = new WebParkingDBContex())
                 {
-                    var parkings = new Parkings();
-                    if (parkingModel.ParkingNumber==null)
+                    if (FindParking(parkingModel.ParkingNumber)!=null)
                     {
-                        da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
+                        ModelState.AddModelError("", "Dublicate");
                     }
                     else
                     {
-                        int parkingsId = 0;
-                        bool result = int.TryParse(parkingModel.ParkingNumber.ToString(), out parkingsId);
-                        parkings = db.Parkings.FirstOrDefault(x => x.Id == parkingsId);
-                        if (parkings!=null)
-                        {
-                            ModelState.AddModelError("", "Already Exist");
-                            return View(parkingModel);
-                        }
-                    }
-
-                   /* da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
-                    return RedirectToAction("SeeAllParkings", "Parking");*/                   
-
+                        da.AddParking(parkingModel.ParkingNumber, parkingModel.ParkingTypeId);
+                        return RedirectToAction("SeeAllParkings", "Parking");
+                    }                                    
                 }
             }
-            
+            IEnumerable<SelectListItem> ParkingsTypeList = da.getParkingsType().Select(m => new SelectListItem() { Text = m.Title, Value = m.Id.ToString() }).ToArray();
+            ViewBag.ParkingsTypes = ParkingsTypeList;
             return View(parkingModel);
         }
 

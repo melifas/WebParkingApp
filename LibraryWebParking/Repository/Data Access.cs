@@ -71,6 +71,15 @@ namespace LibraryWebParking.Repository
             }
         }
 
+        public Parkings FindParking(string PNumber)
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                Parkings parking = db.Parkings.Where(x => x.ParkingNumber == PNumber).FirstOrDefault();
+                return parking;
+            }
+        }
+
         public List<spGetAvailableParkingPositions_Result> getAvailableParkingPositions(DateTime start , DateTime end , int ParkingTypeId)
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
