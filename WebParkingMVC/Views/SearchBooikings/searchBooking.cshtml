@@ -8,16 +8,25 @@
 
 @using (Html.BeginForm("searchBooking", "SearchBooikings", FormMethod.Post))
 {
-    <input type="text" name="lastName" value="Επώνυμο...." />
-    <input type="submit" value="Αναζήτηση" />
+    <div class="search-form">
+        <div class="input-group">
+            <input type="text" placeholder="Επώνυμο....." name="lastName" class="form-control input-lg">
+            <div class="input-group-btn">
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Αναζήτηση
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <div class="hr-line-dashed"></div>
 
     <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.LatName)
             </th>
-           
+
             <th>
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
@@ -49,42 +58,42 @@
 
         @foreach (var item in Model)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LatName)    @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckedIn)
-        </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LatName)    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckedIn)
+                </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkingNumber)
-        </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingNumber)
+                </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Σελίδα Πελάτη", "Details", "Client", new { @id = item.ClientId }, null)
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Σελίδα Πελάτη", "Details", "Client", new { @id = item.ClientId }, null)
 
-        </td>
+                </td>
 
-    </tr>
+            </tr>
         }
 
     </table>
