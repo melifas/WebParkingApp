@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Inspinia_MVC5
+namespace WebParkingMVC
 {
     public class BundleConfig
     {
