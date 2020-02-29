@@ -38,11 +38,13 @@
                     <a class="navbar-brand" href="@Url.Action("Dashboard_1", "Dashboards")">WEBAPPLAYERS</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">                        <
+                    <ul class="nav navbar-nav navbar-right">
+                        <
                         <li> @Html.ActionLink("Κεντρικη", "Index", "Home", new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Διαθεσιμοτητα", "AvailableParkingTypes", "Home", new { @class = "page-scroll" })</li>
-                        <li>@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings",new { }, new { @class = "page-scroll" })</li>                       
+                        <li>@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings", new { }, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Επικοινωνια", "Contact", "Home", new { @class = "page-scroll" })</li>
+                        <li>@Html.ActionLink("Login", "Contact", "Home", new { @class = "page-scroll" })</li>
                     </ul>
                 </div>
             </div>
