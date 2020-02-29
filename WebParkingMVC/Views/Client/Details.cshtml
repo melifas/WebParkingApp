@@ -32,14 +32,18 @@
                         <img alt="image" class="img-responsive" src="@Url.Content(Model.ImagePath)">
                     </div>
                     <div class="ibox-content profile-content">
-                        <h4><strong> @Model.FirstName  @Model.LatName</strong></h4>
-                        <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                        <h4>
+                            <strong>
+                                <i class="fa fa-male"></i>  @Model.FirstName  @Model.LatName
+                            </strong>
+                        </h4>
                         <h5>
-                            @Html.DisplayFor(model => model.Phone)
+                            <i class="fa fa-mobile-phone"></i>  @Html.DisplayFor(model => model.Phone)
+
                         </h5>
-                        <p>
-                            @Html.DisplayFor(model => model.Email)
-                        </p>
+                        <h5>
+                            <i class="fa fa-mail-forward"></i>  @Html.DisplayFor(model => model.Email)
+                        </h5>
                         <div class="row m-t-lg">
                             <div class="col-md-4">
                                 <span class="bar">5,3,9,6,5,9,7,3,5,2</span>
@@ -56,10 +60,10 @@
                         </div>
                         <div class="user-button">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-anchor"></i> Αποστολή email</button>
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-primary btn-sm btn-block" ><i class="fa fa-anchor"></i> <a style="color:white" href="@Url.Action("searchBooking", "SearchBooikings")">Πίσω στην Αναζήτηση</a></button>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -71,67 +75,13 @@
 
 
 
+@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings")
 
+@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings", new { }, new { @class = "text-primary" })
 
-<div>
-    <h4>Στοιχεία Πελάτη @Model.FirstName  @Model.LatName</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
+@Url.Action("Dashboard_1", "Dashboards")
 
-        <dd>
-            <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LatName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LatName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
-
-
-
-
-
-
+<a href="@Url.Action("searchBooking", "SearchBooikings")">Home</a>
 
 
 
