@@ -36,7 +36,7 @@
                         <li>@Html.ActionLink("Διαθεσιμοτητα", "AvailableParkingTypes", "Home", new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings", new { }, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Επικοινωνια", "Contact", "Home", new { @class = "page-scroll" })</li>
-                        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                        
 
                         @if ((User.IsInRole("Admin")))
                         {
@@ -44,7 +44,7 @@
                             <li>@Html.ActionLink("Τροποποίηση Parking", "SeeAllParkings", "Parking")</li>
                             <li>@Html.ActionLink("Τροποποίηση Κρατήσεων", "SeeAllBookings", "BookingDetails")</li>                      
                         }
-
+                        @Html.Partial("_LoginPartial")
 
                     </ul>
                 </div>

@@ -173,6 +173,7 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BookingDetailsController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DashboardsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
@@ -1904,6 +1905,15 @@
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Shared\_RightSidebar.cshtml" />
     <Content Include="Views\Shared\Login_2.cshtml" />
+    <Content Include="Views\Shared\_Layout_2.cshtml" />
+    <Content Include="Views\Shared\_SkinConfig.cshtml" />
+    <Content Include="Views\Shared\_TopNavbar2.cshtml" />
+    <Content Include="Views\Dashboards\Dashboard_1.cshtml" />
+    <Content Include="Views\Dashboards\Dashboard_2.cshtml" />
+    <Content Include="Views\Dashboards\Dashboard_3.cshtml" />
+    <Content Include="Views\Dashboards\Dashboard_4.cshtml" />
+    <Content Include="Views\Dashboards\Dashboard_4_1.cshtml" />
+    <Content Include="Views\Dashboards\Dashboard_5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
