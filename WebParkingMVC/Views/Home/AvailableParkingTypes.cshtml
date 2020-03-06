@@ -8,7 +8,7 @@
     var endDate = ((DateTime)ViewBag.endDate).ToString("yyyy-MM-dd");
 
 
-    
+
 }
 
 <h2>Διαθεσιμότητα Θέσεων</h2>
@@ -19,9 +19,31 @@
     <div class="col-sm-6">
         @using (Html.BeginForm("AvailableParkingTypes", "Home", FormMethod.Post))
         {
-            <input type="date" name="startDate" value="@startDate" />
-            <input type="date" name="endDate" value="@endDate" />
-            <input type="submit" value="Έλεγχος" />
+
+
+
+
+            <div class="ibox-content">
+
+                <div class="form-group" id="data_1">
+                    <label class="font-noraml">Αρχική Ημερομηνία</label>
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="date" name="startDate" value="@startDate"
+                    </div>
+                </div>
+
+                <div class="form-group" id="data_2">
+                    <label class="font-noraml">Τελική Ημερομηνία</label>
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="date" name="endDate" value="@endDate" />
+                    </div>
+                </div>
+
+                <div class="input-group date">
+                    <input type="submit" value="Έλεγχος" />
+                </div>
+            </div>
+
 
             <table class="table  table-hover">
                 <tr>
@@ -70,119 +92,119 @@
                 Διαθεσιμότητα θέσεων Parking
             </h4>
             <p>
-                
+
             </p>
             <div class="row text-center">
                 <div class="col-lg-12">
                     <canvas id="polarChart" width="300" height="300"></canvas>
                     <h5>Γραφική απεικόνιση θέσεων</h5>
                 </div>
-                
+
             </div>
-           
+
         </div>
     </div>
 
 </div>
 
-    
-
-    <div class="small-chat-box fadeInRight animated">
-
-        <div class="heading" draggable="true">
-            <small class="chat-date pull-right">
-                02.19.2015
-            </small>
-            Small chat
-        </div>
-
-        <div class="content">
-
-            <div class="left">
-                <div class="author-name">
-                    Monica Jackson <small class="chat-date">
-                        10:02 am
-                    </small>
-                </div>
-                <div class="chat-message active">
-                    Lorem Ipsum is simply dummy text input.
-                </div>
-
-            </div>
-            <div class="right">
-                <div class="author-name">
-                    Mick Smith
-                    <small class="chat-date">
-                        11:24 am
-                    </small>
-                </div>
-                <div class="chat-message">
-                    Lorem Ipsum is simpl.
-                </div>
-            </div>
-            <div class="left">
-                <div class="author-name">
-                    Alice Novak
-                    <small class="chat-date">
-                        08:45 pm
-                    </small>
-                </div>
-                <div class="chat-message active">
-                    Check this stock char.
-                </div>
-            </div>
-            <div class="right">
-                <div class="author-name">
-                    Anna Lamson
-                    <small class="chat-date">
-                        11:24 am
-                    </small>
-                </div>
-                <div class="chat-message">
-                    The standard chunk of Lorem Ipsum
-                </div>
-            </div>
-            <div class="left">
-                <div class="author-name">
-                    Mick Lane
-                    <small class="chat-date">
-                        08:45 pm
-                    </small>
-                </div>
-                <div class="chat-message active">
-                    I belive that. Lorem Ipsum is simply dummy text.
-                </div>
-            </div>
 
 
-        </div>
-        <div class="form-chat">
-            <div class="input-group input-group-sm">
-                <input type="text" class="form-control"> <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">
-                        Send
-                    </button>
-                </span>
-            </div>
-        </div>
+<div class="small-chat-box fadeInRight animated">
 
-    </div>
-    <div id="small-chat">
-
-        <span class="badge badge-warning pull-right">5</span>
-        <a class="open-small-chat">
-            <i class="fa fa-comments"></i>
-
-        </a>
+    <div class="heading" draggable="true">
+        <small class="chat-date pull-right">
+            02.19.2015
+        </small>
+        Small chat
     </div>
 
-    @section Scripts {
-        @Scripts.Render("~/plugins/flot")
-        @Scripts.Render("~/plugins/sparkline")
-        @Scripts.Render("~/plugins/chartJs")
-        @Scripts.Render("~/plugins/peity")
+    <div class="content">
 
-        <script type="text/javascript">
+        <div class="left">
+            <div class="author-name">
+                Monica Jackson <small class="chat-date">
+                    10:02 am
+                </small>
+            </div>
+            <div class="chat-message active">
+                Lorem Ipsum is simply dummy text input.
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="author-name">
+                Mick Smith
+                <small class="chat-date">
+                    11:24 am
+                </small>
+            </div>
+            <div class="chat-message">
+                Lorem Ipsum is simpl.
+            </div>
+        </div>
+        <div class="left">
+            <div class="author-name">
+                Alice Novak
+                <small class="chat-date">
+                    08:45 pm
+                </small>
+            </div>
+            <div class="chat-message active">
+                Check this stock char.
+            </div>
+        </div>
+        <div class="right">
+            <div class="author-name">
+                Anna Lamson
+                <small class="chat-date">
+                    11:24 am
+                </small>
+            </div>
+            <div class="chat-message">
+                The standard chunk of Lorem Ipsum
+            </div>
+        </div>
+        <div class="left">
+            <div class="author-name">
+                Mick Lane
+                <small class="chat-date">
+                    08:45 pm
+                </small>
+            </div>
+            <div class="chat-message active">
+                I belive that. Lorem Ipsum is simply dummy text.
+            </div>
+        </div>
+
+
+    </div>
+    <div class="form-chat">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control"> <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                    Send
+                </button>
+            </span>
+        </div>
+    </div>
+
+</div>
+<div id="small-chat">
+
+    <span class="badge badge-warning pull-right">5</span>
+    <a class="open-small-chat">
+        <i class="fa fa-comments"></i>
+
+    </a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/plugins/flot")
+    @Scripts.Render("~/plugins/sparkline")
+    @Scripts.Render("~/plugins/chartJs")
+    @Scripts.Render("~/plugins/peity")
+
+    <script type="text/javascript">
         $(document).ready(function () {
 
             $(".bar_dashboard").peity("bar", {
@@ -276,7 +298,7 @@
                 }
             ];
 
-            
+
 
             var polarData = [
 
@@ -317,5 +339,5 @@
                     var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
 
                     });
-        </script>
-    }
+    </script>
+}
