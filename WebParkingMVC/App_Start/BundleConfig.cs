@@ -23,6 +23,9 @@ namespace WebParkingMVC
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-2.1.1.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate*"));
+
             // jQueryUI CSS
             bundles.Add(new ScriptBundle("~/Scripts/plugins/jquery-ui/jqueryuiStyles").Include(
                         "~/Scripts/plugins/jquery-ui/jquery-ui.css"));

@@ -8,13 +8,13 @@ namespace WebParkingMVC.Models
 {
     public class BookRoomModel
     {
-        [Display(Name ="Επιλογή Θέσης")]
+        [Display(Name = "Επιλογή Θέσης")]
         public int ParkingId { get; set; }
 
         public int ParkingtypeId { get; set; }
 
         [Required]
-        [Display(Name = "Απο")]  
+        [Display(Name = "Απο")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime startDate { get; set; }
 
@@ -32,7 +32,10 @@ namespace WebParkingMVC.Models
         public string LastName { get; set; }
         [Display(Name = "Τηλέφωνο")]
         public string Phone { get; set; }
-        [Required]
+
+        [Display(Name = "Διεύθυνση mail")]
+        [Required(ErrorMessage = "H διεύθυνση mail είναι υποχρεωτική")]
+        [EmailAddress(ErrorMessage = "Μη έγκυρη μορφή διεύθυνσης email")]
         public string Email { get; set; }
 
         [Display(Name = "Upload Image")]
