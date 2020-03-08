@@ -28,7 +28,7 @@
     <div class="navbar-wrapper">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                
+
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <
@@ -36,13 +36,14 @@
                         <li>@Html.ActionLink("Διαθεσιμοτητα", "AvailableParkingTypes", "Home", new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings", new { }, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Επικοινωνια", "Contact", "Home", new { @class = "page-scroll" })</li>
-                        
+
 
                         @if ((User.IsInRole("Admin")))
                         {
 
                             <li>@Html.ActionLink("Τροποποίηση Parking", "SeeAllParkings", "Parking")</li>
-                            <li>@Html.ActionLink("Τροποποίηση Κρατήσεων", "SeeAllBookings", "BookingDetails")</li>                      
+                            <li>@Html.ActionLink("Τροποποίηση Κρατήσεων", "SeeAllBookings", "BookingDetails")</li>
+
                         }
                         @Html.Partial("_LoginPartial")
 
@@ -51,6 +52,9 @@
             </div>
         </nav>
     </div>
+
+
+
     <div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#inSlider" data-slide-to="0" class="active"></li>
@@ -62,7 +66,7 @@
                     <div class="carousel-caption">
                         <h1>
                             Καλως Ηρθατε<br />
-                            στην εφαρμογή μας<br />                           
+                            στην εφαρμογή μας<br />
                             Daily Parking
                         </h1>
                         <p>Ενοικιαστε διαδικτυακα την δικη σας θεση ανα ημερα </p>
@@ -255,7 +259,7 @@
                 </div>
             </div>
         </div>
-    </section>   
+    </section>
 
     <section class="timeline gray-section">
         <div class="container">
@@ -646,9 +650,9 @@
 
         var cbpAnimatedHeader = (function () {
             var docElem = document.documentElement,
-                    header = document.querySelector('.navbar-default'),
-                    didScroll = false,
-                    changeHeaderOn = 200;
+                header = document.querySelector('.navbar-default'),
+                didScroll = false,
+                changeHeaderOn = 200;
             function init() {
                 window.addEventListener('scroll', function (event) {
                     if (!didScroll) {

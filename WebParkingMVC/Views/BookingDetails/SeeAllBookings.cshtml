@@ -1,61 +1,91 @@
 ﻿@model IEnumerable<LibraryWebParking.Model.spBookingDetails_Result>
 
 @{
-    ViewBag.Title = "SeeAllBookings";
+    ViewBag.Title = "Πίνακας Κρατήσεων";
 }
 
-<h2>SeeAllBookings</h2>
+<h2>Πίνακας Κρατήσεων</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateBooking","BookingDetails")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LatName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParkingNumber)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LatName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkingNumber)
-        </td>
-        <td>            
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Τροποποίηση κρατήσεων εφαρμογής  </h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-user">
+                                                    <li>
+                                                        <a href="#">Config option 1</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Config option 2</a>
+                                                    </li>
+                                                </ul>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
 
-</table>
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>  @Html.DisplayNameFor(model => model.StartDate)</th>
+                                                        <th>  @Html.DisplayNameFor(model => model.EndDate)</th>
+                                                        <th> @Html.DisplayNameFor(model => model.LatName)</th>
+                                                        <th> @Html.DisplayNameFor(model => model.FirstName)</th>
+                                                        <th> @Html.DisplayNameFor(model => model.Phone)</th>
+                                                        <th> @Html.DisplayNameFor(model => model.ParkingNumber)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td> @Html.DisplayFor(modelItem => item.StartDate)</td>
+
+                                                            <td>   @Html.DisplayFor(modelItem => item.EndDate)</td>
+                                                            <td>   @Html.DisplayFor(modelItem => item.LatName)</td>
+                                                            <td>    @Html.DisplayFor(modelItem => item.FirstName)</td>
+                                                            <td>   @Html.DisplayFor(modelItem => item.Phone)</td>
+                                                            <td>   @Html.DisplayFor(modelItem => item.ParkingNumber)
+                                                            <td>
+                                                                <div class="col-sm-6">
+                                                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-recycle"></i> @Html.ActionLink("Διαγραφή Θέσης", "Delete", "Parking", new { id = item.Id }, new { @style = "color:white" })</button>
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-arrow-up"></i> @Html.ActionLink("Δημιουργία Κράτησης", "AvailableParkingTypes", "Home", null, new { @style = "color:white" })</button>
+                                        </div>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+
+</div>
+
