@@ -260,5 +260,7 @@ namespace LibraryWebParking.Model
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spParkingPositionsNotBooked_Result1>("spParkingPositionsNotBooked");
         }
+
+        public System.Data.Entity.DbSet<LibraryWebParking.Model.spBookingDetails_Result> spBookingDetails_Result { get; set; }
     }
 }

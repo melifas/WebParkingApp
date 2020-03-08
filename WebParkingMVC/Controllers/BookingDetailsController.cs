@@ -35,13 +35,13 @@ namespace WebParkingMVC.Controllers
         {
             ViewBag.startDate = DateTime.Now.Date;
             ViewBag.endDate = DateTime.Now.Date.AddDays(3);
-            IEnumerable<SelectListItem> Bookings = da.getPositionsNotBooked().Select(m=>new SelectListItem() { Text = m.ParkingNumber, Value = m.Id.ToString() }).ToArray();
+            IEnumerable<SelectListItem> Bookings = da.getPositionsNotBooked().Select(m => new SelectListItem() { Text = m.ParkingNumber, Value = m.Id.ToString() }).ToArray();
             IEnumerable<SelectListItem> Clients = da.getListofCustomers().Select(m => new SelectListItem() { Text = m.LatName, Value = m.Id.ToString() }).ToArray();
             ViewBag.Bookings = Bookings;
             ViewBag.Clients = Clients;
 
-            
-            FullBookRoomModel model = new FullBookRoomModel() { StartDate = new DateTime(), EndDate = new DateTime()};
+
+            FullBookRoomModel model = new FullBookRoomModel() { StartDate = new DateTime(), EndDate = new DateTime() };
             return View(model);
         }
 
@@ -51,7 +51,7 @@ namespace WebParkingMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                da.BookingFromAdmin(fullBookRoomModel.StartDate, fullBookRoomModel.EndDate, fullBookRoomModel.ParkingId,fullBookRoomModel.ClientId);
+                da.BookingFromAdmin(fullBookRoomModel.StartDate, fullBookRoomModel.EndDate, fullBookRoomModel.ParkingId, fullBookRoomModel.ClientId);
                 return RedirectToAction("SeeAllBookings", "BookingDetails");
             }
             else
@@ -83,20 +83,35 @@ namespace WebParkingMVC.Controllers
         }
 
         // GET: BookingDetails/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                var booking = db.Bookings.Where(x => x.Id == id).FirstOrDefault();
+                return View(booking);
+            }
+
         }
 
         // POST: BookingDetails/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                using (WebParkingDBContex db = new WebParkingDBContex())
+                {
+                    var b = db.Bookings.Where(x => x.Id == id).FirstOrDefault();
 
-                return RedirectToAction("Index");
+                    db.Bookings.Remove(b);
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("SeeAllBookings", "BookingDetails");
             }
             catch
             {
