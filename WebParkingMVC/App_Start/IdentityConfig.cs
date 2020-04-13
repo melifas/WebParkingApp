@@ -141,7 +141,7 @@ namespace WebParkingMVC
             string userName = "admin@unipi.gr";
             string Password = "P@ssw0rd";
 
-            //Managres Credential
+            //Managers Credential
             string ManagerUserName = "manager@unipi.gr";
             string ManagerPassword = "P@ssw0rd";
 

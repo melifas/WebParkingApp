@@ -54,10 +54,10 @@ namespace WebParkingMVC.Controllers
                 model.ImageFile.SaveAs(fileNme);
 
                 
-                da.BookClient(model.FirstName, model.LastName, model.ImagePath, model.Email, model.Phone, model.startDate, model.endDate, model.ParkingtypeId);
+                da.BookClient(model.FirstName, model.LastName, model.ImagePath, model.Email, model.Phone, model.startDate, model.endDate, model.ParkingtypeId,model.ParkingId);
 
                 ModelState.Clear();
-                //Αποστολή mail ασύγχρονα                
+                //Αποστολή mail ασύγχρονα σύμφωνα με οδηγίες απο SCOTT HANSELMAN                
                 HostingEnvironment.QueueBackgroundWorkItem(ct => SendMailAsync(model));
 
                 return RedirectToAction("Index");

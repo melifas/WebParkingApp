@@ -24,14 +24,14 @@
                             <div class="form-group col-md-4">
                                 @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Please enter email" })
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Παρακαλώ εισάγεται email" })
                                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
                                 @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
                                 <div class="col-md-10">
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Please enter password" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Παρακαλώ εισάγεται password" })
                                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -44,15 +44,15 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+                                <button type="submit" class="btn btn-primary block full-width m-b">Είσοδος</button>
                             </div>
                             <p>
-                                @Html.ActionLink("Register as a new user", "Register")
+                                @Html.ActionLink("Εγγραφή νέου χρήστη", "Register")
                             </p>
                             @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                                <p>
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>*@
                         }
                     </section>
                 </div>

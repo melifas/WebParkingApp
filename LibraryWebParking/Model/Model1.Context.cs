@@ -190,7 +190,7 @@ namespace LibraryWebParking.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAvailableParkingPositions_Result>("spGetAvailableParkingPositions", startDateParameter, endDateParameter, roomTypeIDParameter);
         }
     
-        public virtual ObjectResult<spgetAvailableparkingsTypeCount> spgetAvailableparkingsType(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        public virtual ObjectResult<spgetAvailableparkingsTypeCount> spgetAvailableparkingsTypeCount(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
         {
             var startDateParameter = startDate.HasValue ?
                 new ObjectParameter("startDate", startDate) :
@@ -200,7 +200,7 @@ namespace LibraryWebParking.Model
                 new ObjectParameter("endDate", endDate) :
                 new ObjectParameter("endDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spgetAvailableparkingsTypeCount>("spgetAvailableparkingsType", startDateParameter, endDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spgetAvailableparkingsTypeCount>("spgetAvailableparkingsTypeCount", startDateParameter, endDateParameter);
         }
     
         public virtual int spBookingInsert(Nullable<int> clientId, Nullable<int> parkingId, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<decimal> totalCost)
@@ -260,7 +260,5 @@ namespace LibraryWebParking.Model
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spParkingPositionsNotBooked_Result1>("spParkingPositionsNotBooked");
         }
-
-        public System.Data.Entity.DbSet<LibraryWebParking.Model.spBookingDetails_Result> spBookingDetails_Result { get; set; }
     }
 }

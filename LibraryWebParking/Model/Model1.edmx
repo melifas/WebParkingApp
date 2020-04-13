@@ -280,7 +280,7 @@
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
             <Parameter Name="roomTypeID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spgetAvailableparkingsType" ReturnType="Collection(WebParkingDBModel.spgetAvailableparkingsTypeCount)">
+          <FunctionImport Name="spgetAvailableparkingsTypeCount" ReturnType="Collection(WebParkingDBModel.spgetAvailableparkingsTypeCount)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -463,7 +463,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spgetAvailableparkingsType" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType">
+          <FunctionImportMapping FunctionImportName="spgetAvailableparkingsTypeCount" FunctionName="WebParkingDBModel.Store.spgetAvailableparkingsType">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WebParkingDBModel.spgetAvailableparkingsTypeCount">
                 <ScalarProperty Name="Id" ColumnName="Id" />

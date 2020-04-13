@@ -30,6 +30,7 @@ namespace WebParkingMVC.Models
         [Required]
         [Display(Name = "Επίθετο")]
         public string LastName { get; set; }
+        [Required]
         [Display(Name = "Τηλέφωνο")]
         public string Phone { get; set; }
 

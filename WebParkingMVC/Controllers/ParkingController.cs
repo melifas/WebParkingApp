@@ -3,6 +3,7 @@ using LibraryWebParking.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -146,12 +147,13 @@ namespace WebParkingMVC.Controllers
                 }
 
             }
-            catch
+            catch(Exception e)
             {
-
+                return RedirectToAction("SeeAllParkings");
             }
 
-            return View();
+            return RedirectToAction("SeeAllParkings");
         }
+        
     }
 }

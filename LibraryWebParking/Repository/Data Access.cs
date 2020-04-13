@@ -99,7 +99,7 @@ namespace LibraryWebParking.Repository
 
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
-                parkingTypes = db.spgetAvailableparkingsType(startDate, endDate).ToList();
+                parkingTypes = db.spgetAvailableparkingsTypeCount(startDate, endDate).ToList();
 
                 return parkingTypes;
             }
@@ -153,7 +153,7 @@ namespace LibraryWebParking.Repository
         }
 
 
-        public void BookClient(string firstName,string lastName, string ImagePath,string email,string Phone ,DateTime startDate, DateTime endDate,int ParkingTypeId) 
+        public void BookClient(string firstName,string lastName, string ImagePath,string email,string Phone ,DateTime startDate, DateTime endDate,int ParkingTypeId,int ParkingId) 
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
             {
@@ -164,12 +164,12 @@ namespace LibraryWebParking.Repository
 
                 TimeSpan timeStaying =  endDate.Date.Subtract(startDate.Date);
 
-                List<spGetAvailableParkingPositions_Result> availableParkingPositions =  db.spGetAvailableParkingPositions(startDate, endDate, ParkingTypeId).ToList();
+                //List<spGetAvailableParkingPositions_Result> availableParkingPositions =  db.spGetAvailableParkingPositions(startDate, endDate, ParkingTypeId).ToList();
 
                 Bookings booking = new Bookings()
                 {
                     ClientId = client.Id,
-                    ParkingId = availableParkingPositions.First().Id,
+                    ParkingId = ParkingId,
                     StartDate = startDate,
                     EndDate = endDate,
                     TotalPrice = timeStaying.Days * parkingtype.Price
