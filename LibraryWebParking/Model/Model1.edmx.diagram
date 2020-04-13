@@ -12,6 +12,16 @@
         <AssociationConnector Association="WebParkingDBModel.FK_Bookings_Clients" ManuallyRouted="false" />
         <AssociationConnector Association="WebParkingDBModel.FK_Bookings_Parkings" ManuallyRouted="false" />
         <AssociationConnector Association="WebParkingDBModel.FK_Parkings_ParkingTypes" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebParkingDBModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebParkingDBModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="WebParkingDBModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="6.375" />
+        <EntityTypeShape EntityType="WebParkingDBModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="7.625" />
+        <EntityTypeShape EntityType="WebParkingDBModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="5" />
+        <EntityTypeShape EntityType="WebParkingDBModel.AspNetUsers" Width="1.5" PointX="8" PointY="5.375" />
+        <EntityTypeShape EntityType="WebParkingDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="8.75" />
+        <AssociationConnector Association="WebParkingDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="WebParkingDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="WebParkingDBModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

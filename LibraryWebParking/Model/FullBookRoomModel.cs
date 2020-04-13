@@ -22,7 +22,7 @@ namespace LibraryWebParking.Model
         public Nullable<bool> CheckedIn { get; set; }
         public string FirstName { get; set; }
         public string LatName { get; set; }
-        public int Phone { get; set; }
+        public Nullable<int> Phone { get; set; }
         public string Email { get; set; }
         public string ParkingNumber { get; set; }
         public int ParkingTypeId { get; set; }

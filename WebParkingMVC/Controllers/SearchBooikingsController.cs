@@ -25,6 +25,44 @@ namespace WebParkingMVC.Controllers
             return View(results);
         }
 
+        public ActionResult Edit(int Id, string lastName)
+        {
+            //CategoryViewModel result = CategoriesRepository.GetById(id);
+            // EditInitialize(result);
+            //return View(//result);
+
+            /*using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                 var model = db.spBookingsSearch(lastName);
+                return View(model);
+            }*/
+
+            FullBookRoomModel results = da.SearchBookings(lastName).Where(x=>x.Id == Id).FirstOrDefault();
+            return View(results);
+        }
+
+        // POST: Categories/Edit/5
+        //[HttpPost]
+
+        //[ValidateAntiForgeryToken]
+        /* public ActionResult Edit(int id, CategoryBindingModel model)
+         {
+             try
+             {
+                 bool result = CategoriesRepository.Update(id, model);
+                 if (result)
+                 {
+                     return RedirectToAction("Index");
+                 }
+             }
+             catch (Exception ex)
+             {
+                 ModelState.AddModelError("", ex.Message);
+             }
+
+             return View();
+         }
+ */
 
     }
 }

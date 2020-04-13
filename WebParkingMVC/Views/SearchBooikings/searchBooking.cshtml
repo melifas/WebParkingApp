@@ -90,6 +90,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Σελίδα Πελάτη", "Details", "Client", new { @id = item.ClientId }, null)
+                    @Html.ActionLink("Επεξεργασία", "Edit", "SearchBooikings", new { @id = item.Id,@lastName = item.LatName }, null)
 
                 </td>
 

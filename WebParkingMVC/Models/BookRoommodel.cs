@@ -8,6 +8,7 @@ namespace WebParkingMVC.Models
 {
     public class BookRoomModel
     {
+        public int Id{ get; set; }
         [Display(Name = "Επιλογή Θέσης")]
         public int ParkingId { get; set; }
 
@@ -43,5 +44,7 @@ namespace WebParkingMVC.Models
         public string ImagePath { get; set; }
 
         public HttpPostedFileBase ImageFile { get; set; }
+
+        public bool isChecked { get; set; }
     }
 }
