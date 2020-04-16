@@ -19,12 +19,11 @@
                 </li>
 
                 <li class="dropdown">
-                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Κρατήσεις <span class="caret"></span></a>
                     <ul role="menu" class="dropdown-menu">
-                        <li><a href="">Menu item</a></li>
-                        <li><a href="">Menu item</a></li>
-                        <li><a href="">Menu item</a></li>
-                        <li><a href="">Menu item</a></li>
+                        <li></li>
+                        <li>@Html.ActionLink("Μη πληρωμένες", "BookingsNotChecked", "BookingDetails")</li>
+                        <li>@Html.ActionLink("Πληρωμένες", "BookingsChecked", "BookingDetails")</li>                                               
                     </ul>
                 </li>
                 <li class="dropdown">

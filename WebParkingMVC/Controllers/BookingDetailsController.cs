@@ -24,6 +24,34 @@ namespace WebParkingMVC.Controllers
             }
         }
 
+        public ActionResult BookingsNotChecked()
+        {
+
+
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+
+                return View(da.getBookingsNotChecked());
+            }
+
+
+
+        }
+
+        public ActionResult BookingsChecked()
+        {
+
+
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+
+                return View(da.getBookingsChecked());
+            }
+
+
+
+        }
+
         // GET: BookingDetails/Details/5
         public ActionResult Details(int id)
         {

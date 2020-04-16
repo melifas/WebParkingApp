@@ -89,13 +89,14 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.ActionLink("Σελίδα Πελάτη", "Details", "Client", new { @id = item.ClientId }, null)
-                    @Html.ActionLink("Επεξεργασία", "Edit", "SearchBooikings", new { @id = item.Id,@lastName = item.LatName }, null)
-
+                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-recycle"></i>  @Html.ActionLink("Σελίδα Πελάτη", "Details", "Client", new { @id = item.ClientId }, new { @style = "color:white" })</button>
+                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-recycle"></i>  @Html.ActionLink("Επεξεργασία", "Edit", "SearchBooikings", new { @id = item.Id, @lastName = item.LatName }, new { @style = "color:white" })</button>
                 </td>
-
+                <div class="hr-line-dashed"></div>
             </tr>
+            <div class="hr-line-dashed"></div>
         }
 
     </table>
+    
 }

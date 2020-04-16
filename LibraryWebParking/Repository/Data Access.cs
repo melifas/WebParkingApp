@@ -29,6 +29,27 @@ namespace LibraryWebParking.Repository
             }
         }
 
+
+        public List<spBookingsNotBooked_Result> getBookingsNotChecked()
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                List<spBookingsNotBooked_Result> results = db.spBookingsNotBooked().ToList();
+                return results;
+            }
+
+        }
+
+        public List<spBookingsBooked_Result> getBookingsChecked()
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+                List<spBookingsBooked_Result> results = db.spBookingsBooked().ToList();
+                return results;
+            }
+
+        }
+
         public List<spParkingPositionsNotBooked_Result1> getPositionsNotBooked() 
         {
             using (WebParkingDBContex db = new WebParkingDBContex())
@@ -127,6 +148,18 @@ namespace LibraryWebParking.Repository
                 db.SaveChanges();
             }
             
+        }
+
+
+        public void CheckOutClient(int bookingId)
+        {
+            using (WebParkingDBContex db = new WebParkingDBContex())
+            {
+
+                db.spBookingsCheckOut(bookingId);
+                db.SaveChanges();
+            }
+
         }
 
         public void BookingFromAdmin(DateTime startDate, DateTime endDate, int ParkingId,int ClientId) 

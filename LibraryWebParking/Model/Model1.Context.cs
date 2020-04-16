@@ -370,5 +370,24 @@ namespace LibraryWebParking.Model
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams1");
         }
+    
+        public virtual int spBookingsCheckOut(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spBookingsCheckOut", idParameter);
+        }
+    
+        public virtual ObjectResult<spBookingsNotBooked_Result> spBookingsNotBooked()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBookingsNotBooked_Result>("spBookingsNotBooked");
+        }
+    
+        public virtual ObjectResult<spBookingsBooked_Result> spBookingsBooked()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBookingsBooked_Result>("spBookingsBooked");
+        }
     }
 }

@@ -1916,6 +1916,8 @@
     <Content Include="Views\Dashboards\Dashboard_5.cshtml" />
     <Content Include="Views\BookingDetails\Delete.cshtml" />
     <Content Include="Views\SearchBooikings\Edit.cshtml" />
+    <Content Include="Views\BookingDetails\BookingsNotChecked.cshtml" />
+    <Content Include="Views\BookingDetails\BookingsChecked.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

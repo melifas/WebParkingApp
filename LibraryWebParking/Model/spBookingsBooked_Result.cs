@@ -10,9 +10,8 @@
 namespace LibraryWebParking.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Bookings
+    public partial class spBookingsBooked_Result
     {
         public int Id { get; set; }
         public Nullable<int> ClientId { get; set; }
@@ -21,8 +20,10 @@ namespace LibraryWebParking.Model
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
         public bool CheckedIn { get; set; }
-    
-        public virtual Clients Clients { get; set; }
-        public virtual Parkings Parkings { get; set; }
+        public string FirstName { get; set; }
+        public string LatName { get; set; }
+        public Nullable<int> Phone { get; set; }
+        public string Email { get; set; }
+        public string ParkingNumber { get; set; }
     }
 }

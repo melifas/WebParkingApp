@@ -19,7 +19,7 @@ namespace LibraryWebParking.Model
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
-        public Nullable<bool> CheckedIn { get; set; }
+        public bool CheckedIn { get; set; }
         public string FirstName { get; set; }
         public string LatName { get; set; }
         public Nullable<int> Phone { get; set; }
