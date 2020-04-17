@@ -56,7 +56,7 @@ namespace WebParkingMVC.Controllers
                  ModelState.AddModelError("", ex.Message);
              }
 
-            return RedirectToAction("searchBooking", "SearchBooikings", new { model.LatName });
+            return RedirectToAction("BookingsNotChecked", "BookingDetails");
         }
 
 

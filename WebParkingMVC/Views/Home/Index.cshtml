@@ -36,18 +36,28 @@
                         <li>@Html.ActionLink("Διαθεσιμοτητα", "AvailableParkingTypes", "Home", new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings", new { }, new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Επικοινωνια", "Contact", "Home", new { @class = "page-scroll" })</li>
-
-
-                        @if ((User.IsInRole("Admin")))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                         {
-
-                            <li>@Html.ActionLink("Τροποποίηση Parking", "SeeAllParkings", "Parking")</li>
-                            <li>@Html.ActionLink("Τροποποίηση Κρατήσεων", "SeeAllBookings", "BookingDetails")</li>
-
+                            <li class="dropdown">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> ΚΡΑΤΗΣΕΙΣ <span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li></li>
+                                    <li>@Html.ActionLink("ΜΗ ΠΛΗΡΩΜΕΝΕΣ", "BookingsNotChecked", "BookingDetails", null, new { @style = "color:green" })</li>
+                                    <li>@Html.ActionLink("ΠΛΗΡΩΜΕΝΕΣ", "BookingsChecked", "BookingDetails", null, new { @style = "color:green" })</li>
+                                </ul>
+                            </li>
                         }
-                        @Html.Partial("_LoginPartial")
 
-                    </ul>
+                            @if ((User.IsInRole("Admin")))
+                            {
+
+                                <li>@Html.ActionLink("Τροποποίηση Parking", "SeeAllParkings", "Parking")</li>
+                                <li>@Html.ActionLink("Τροποποίηση Κρατήσεων", "SeeAllBookings", "BookingDetails")</li>
+
+                            }
+                            @Html.Partial("_LoginPartial")
+
+                        </ul>
                 </div>
             </div>
         </nav>
