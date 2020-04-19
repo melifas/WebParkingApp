@@ -22,7 +22,15 @@ namespace WebParkingMVC.Controllers
         public ActionResult searchBooking(string lastName)
         {
             List<FullBookRoomModel> results = da.SearchBookings(lastName);
-            return View(results);
+            if (results.Count!=0)
+            {
+                return View(results);
+            }
+            else
+            {
+                return View("searchBookingempty");
+            }
+            
         }
 
         public ActionResult Edit(int Id, string lastName)

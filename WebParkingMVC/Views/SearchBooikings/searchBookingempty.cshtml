@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "EmptyPage";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Ανεπιτυχής Αναζήτηση</h2>
+        
+    </div>
+    
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content">
+            <div class="middle-box text-center animated fadeInRightBig">
+                <h3 class="font-bold">Δεν υπάρχουν κρατήσεις με βάση το επώνυμο που πληκτρολογήσατε</h3>
+
+                <div class="error-desc">
+                    Παρακαλώ δοκιμάστε ξανά πατώνατς το κουμπί- Νέα αναζήτηση
+                    <br /><button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-recycle"></i>  @Html.ActionLink("Νέα Αναζήτηση", "searchBooking", "SearchBooikings", null, new { @style = "color:white" })</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

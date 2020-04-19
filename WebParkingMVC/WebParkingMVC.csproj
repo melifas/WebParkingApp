@@ -1918,6 +1918,7 @@
     <Content Include="Views\SearchBooikings\Edit.cshtml" />
     <Content Include="Views\BookingDetails\BookingsNotChecked.cshtml" />
     <Content Include="Views\BookingDetails\BookingsChecked.cshtml" />
+    <Content Include="Views\SearchBooikings\searchBookingempty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
