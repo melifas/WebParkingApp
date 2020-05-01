@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LibraryWebParking.Model.WebParkingDBContex">
+    <Position X="16.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FBIAUgAQAgYxiCAAAiIKUCAAGAAEYAAAAIAEEACAAAE=</HashCode>
+      <FileName>Model\Model1.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.AspNetRoles">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAYAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AspNetRoles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.AspNetUserLogins">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAgAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Model\AspNetUserLogins.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.AspNetUsers">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAACAAoEAAAAAAQAABAAAAQAAIAQQAABAAAQE=</HashCode>
+      <FileName>Model\AspNetUsers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.Bookings">
+    <Position X="18.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAgAAAAAAgDAAAAAgAAAAQAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Model\Bookings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.Clients">
+    <Position X="8.25" Y="7" Width="1.5" />
+    <NestedTypes>
+      <Class Name="LibraryWebParking.Model.Clients.Clients_metadata" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelMetadata\Clients.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAgAAAAAAAAAIAAAAAAAAAAAAAAKAAAAAA=</HashCode>
+      <FileName>Model\Clients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.FullBookRoomModel">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="LibraryWebParking.Model.FullBookRoomModel.FullBookRoomModel_metadata" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelMetadata\FullBookRoomModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIKAEAAASAAAEAAgBAAAAAgAAAAQCAAAAAAKEAAAAA=</HashCode>
+      <FileName>Model\FullBookRoomModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.Parkings">
+    <Position X="14.25" Y="4.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="LibraryWebParking.Model.Parkings.Parking_metadata" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelMetadata\Parkings.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgACAAgAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Parkings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.ParkingTypes">
+    <Position X="18.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAwAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ParkingTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.sp_helpdiagramdefinition_Result">
+    <Position X="22.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\sp_helpdiagramdefinition_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spBookingDetails_Result">
+    <Position X="14.25" Y="7" Width="1.5" />
+    <NestedTypes>
+      <Class Name="LibraryWebParking.Model.spBookingDetails_Result.Booking_metadata" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelMetadata\spBookingDetails_Result.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAKAEAAACAAAAAAgBAAAAAgAAAAQCAAAAAAKEAAAAA=</HashCode>
+      <FileName>Model\spBookingDetails_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spBookingsBooked_Result">
+    <Position X="22" Y="6.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="LibraryWebParking.Model.spBookingsBooked_Result.spBookingsBooked_Result_metadata" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelMetadata\spBookingsBooked_Result.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAKAEAAACAAAAAAgBAAAAAgAAAAQCAAAAAAKEAAAAA=</HashCode>
+      <FileName>Model\spBookingsBooked_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spBookingsNotBooked_Result">
+    <Position X="20.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="LibraryWebParking.Model.spBookingsNotBooked_Result.BookingsNotBooked" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelMetadata\spBookingsNotBooked_Result.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAKAEAAACAAAAAAgBAAAAAgAAAAQCAAAAAAKEAAAAA=</HashCode>
+      <FileName>Model\spBookingsNotBooked_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spGetAvailableParkingPositions_Result">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\spGetAvailableParkingPositions_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spgetAvailableparkingsType_Result">
+    <Position X="12" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\spgetAvailableparkingsType_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spgetparkings_Result">
+    <Position X="20.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\spgetparkings_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spInsertClient_Result">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAA=</HashCode>
+      <FileName>Model\spInsertClient_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spParkingPositionsNotBooked_Result">
+    <Position X="22.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\spParkingPositionsNotBooked_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spParkingPositionsNotBooked_Result1">
+    <Position X="6.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\spParkingPositionsNotBooked_Result1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryWebParking.Model.spParkingWithTypes_Result">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="LibraryWebParking.Model.spParkingWithTypes_Result.spgetAvailableparkingsTypeCount_metadata" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelMetadata\spParkingWithTypes_Result.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAQAAAEAAgAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\spParkingWithTypes_Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

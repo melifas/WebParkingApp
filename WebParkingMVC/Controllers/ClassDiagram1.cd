@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WebParkingMVC.Controllers.AccountController">
+    <Position X="0.5" Y="1.25" Width="1.75" />
+    <NestedTypes>
+      <Class Name="WebParkingMVC.Controllers.AccountController.ChallengeResult" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAChACAAAAAAAAFgEgAABAABMKIAAAMRAAQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebParkingMVC.Controllers.BookController">
+    <Position X="16" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAQAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAQAAAA=</HashCode>
+      <FileName>Controllers\BookController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebParkingMVC.Controllers.BookingDetailsController">
+    <Position X="16" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAABAAAAAAEAAAAAAAEAAAACAAQAAAQAAAg=</HashCode>
+      <FileName>Controllers\BookingDetailsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebParkingMVC.Controllers.ClientController">
+    <Position X="2.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ClientController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebParkingMVC.Controllers.HomeController">
+    <Position X="13.25" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAEACAAAAAAAAAAAACAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebParkingMVC.Controllers.ManageController">
+    <Position X="2.75" Y="5.25" Width="2.5" />
+    <NestedTypes>
+      <Enum Name="WebParkingMVC.Controllers.ManageController.ManageMessageId" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\ManageController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABACAQiAAgAAAAEFhAAAAAAEAIMIAAEEEgAAkAAA=</HashCode>
+      <FileName>Controllers\ManageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebParkingMVC.Controllers.ParkingController">
+    <Position X="13" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAABAAAAAAAAAAAAAAEAAEACAAAAQAAIAAA=</HashCode>
+      <FileName>Controllers\ParkingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebParkingMVC.Controllers.SearchBooikingsController">
+    <Position X="13.25" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\SearchBooikingsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inspinia_MVC5.Controllers.DashboardsController">
+    <Position X="10.25" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQCIEAAAAAAAAAAAAAAAAEAAAAAEAAAAA=</HashCode>
+      <FileName>Controllers\DashboardsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Web.Mvc.Controller">
+    <Position X="6" Y="1.75" Width="3.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="System.Web.Mvc.IActionFilter">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Mvc.Filters.IAuthenticationFilter">
+    <Position X="16.5" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Mvc.IAuthorizationFilter">
+    <Position X="10" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.IDisposable">
+    <Position X="10.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Mvc.IResultFilter">
+    <Position X="16.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Mvc.Async.IAsyncManagerContainer">
+    <Position X="16.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Mvc.IController">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Mvc.Async.IAsyncController">
+    <Position X="10" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Mvc.IExceptionFilter">
+    <Position X="10.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

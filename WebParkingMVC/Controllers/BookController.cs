@@ -74,16 +74,21 @@ namespace WebParkingMVC.Controllers
                 TimeSpan timeStaying = model.endDate.Date.Subtract(model.startDate.Date);
                 ParkingTypes parkingtype = db.ParkingTypes.Where(x => x.Id == model.ParkingtypeId).FirstOrDefault();
                 var totalPrice = timeStaying.Days * parkingtype.Price;
+                //var parks = db.Parkings.Where(p => p.Id == model.ParkingId);
+                var books = db.spBookingDetails();
+                var final = books.Where(b => b.ParkingId == model.ParkingId).FirstOrDefault();
+
 
                 SmtpSection smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
                 MailAddress from = new MailAddress(smtpSection.From);
                 MailAddress to = new MailAddress(model.Email,
-                                                string.Format("{0} {1} {2} {3} {4}", 
+                                                string.Format("{0} {1} {2} {3} {4} {5}", 
                                                 model.LastName, 
                                                 model.FirstName, 
                                                 model.startDate, 
                                                 model.endDate,
-                                                totalPrice                                                
+                                                totalPrice,
+                                                final.ParkingNumber
                                                 ));
 
                 MailMessage message = new MailMessage(from, to);
@@ -91,7 +96,7 @@ namespace WebParkingMVC.Controllers
                 //Διάβασε το template.txt
                 string template = System.IO.File.ReadAllText(HostingEnvironment.MapPath("~/Content/templates/template.txt"));
 
-                message.Body = string.Format(template, model.FirstName, model.LastName,model.startDate,model.endDate, string.Format("{0:C0}", totalPrice));
+                message.Body = string.Format(template, model.FirstName, model.LastName,model.startDate,model.endDate, string.Format("{0:C0}", totalPrice),final.ParkingNumber);
                 message.IsBodyHtml = false;
 
                 client.Send(message);

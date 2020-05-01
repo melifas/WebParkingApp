@@ -7,4 +7,5 @@ Last Name : {1}
 Reservation Start Date : {2}
 Reservation End Date :{3}
 Total Cost : {4}
+ParkingPosition : {5}
 

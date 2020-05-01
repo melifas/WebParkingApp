@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>INSPINIA | @ViewBag.Title</title>
+    <title>DaiyParking | @ViewBag.Title</title>
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
@@ -34,19 +34,23 @@
                         <
                         <li> @Html.ActionLink("Κεντρικη", "Index", "Home", new { @class = "page-scroll" })</li>
                         <li>@Html.ActionLink("Διαθεσιμοτητα", "AvailableParkingTypes", "Home", new { @class = "page-scroll" })</li>
-                        <li>@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings", new { }, new { @class = "page-scroll" })</li>
-                        <li>@Html.ActionLink("Επικοινωνια", "Contact", "Home", new { @class = "page-scroll" })</li>
+
                         @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                         {
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> ΚΡΑΤΗΣΕΙΣ <span class="caret"></span></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li></li>
-                                    <li>@Html.ActionLink("ΜΗ ΠΛΗΡΩΜΕΝΕΣ", "BookingsNotChecked", "BookingDetails", null, new { @style = "color:green" })</li>
-                                    <li>@Html.ActionLink("ΠΛΗΡΩΜΕΝΕΣ", "BookingsChecked", "BookingDetails", null, new { @style = "color:green" })</li>
-                                </ul>
-                            </li>
+                            <li>@Html.ActionLink("Αναζητηση", "searchBooking", "SearchBooikings", new { }, new { @class = "page-scroll" })</li>
                         }
+                            <li>@Html.ActionLink("Επικοινωνια", "Contact", "Home", new { @class = "page-scroll" })</li>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                            {
+                                <li class="dropdown">
+                                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> ΚΡΑΤΗΣΕΙΣ <span class="caret"></span></a>
+                                    <ul role="menu" class="dropdown-menu">
+                                        <li></li>
+                                        <li>@Html.ActionLink("ΜΗ ΠΛΗΡΩΜΕΝΕΣ", "BookingsNotChecked", "BookingDetails", null, new { @style = "color:green" })</li>
+                                        <li>@Html.ActionLink("ΠΛΗΡΩΜΕΝΕΣ", "BookingsChecked", "BookingDetails", null, new { @style = "color:green" })</li>
+                                    </ul>
+                                </li>
+                            }
 
                             @if ((User.IsInRole("Admin")))
                             {
