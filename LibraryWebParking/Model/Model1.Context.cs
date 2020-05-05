@@ -37,7 +37,6 @@ namespace LibraryWebParking.Model
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -388,6 +387,28 @@ namespace LibraryWebParking.Model
         public virtual ObjectResult<spBookingsBooked_Result> spBookingsBooked()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spBookingsBooked_Result>("spBookingsBooked");
+        }
+    
+        public virtual ObjectResult<spAvailableParkingPositionsWithStringParams_Result> spAvailableParkingPositionsWithStringParams(string startDate, string endDate, Nullable<int> roomTypeID)
+        {
+            var startDateParameter = startDate != null ?
+                new ObjectParameter("startDate", startDate) :
+                new ObjectParameter("startDate", typeof(string));
+    
+            var endDateParameter = endDate != null ?
+                new ObjectParameter("endDate", endDate) :
+                new ObjectParameter("endDate", typeof(string));
+    
+            var roomTypeIDParameter = roomTypeID.HasValue ?
+                new ObjectParameter("roomTypeID", roomTypeID) :
+                new ObjectParameter("roomTypeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spAvailableParkingPositionsWithStringParams_Result>("spAvailableParkingPositionsWithStringParams", startDateParameter, endDateParameter, roomTypeIDParameter);
+        }
+    
+        public virtual ObjectResult<spAvailableParkingsToday_Result> spAvailableParkingsToday()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spAvailableParkingsToday_Result>("spAvailableParkingsToday");
         }
     }
 }

@@ -114,16 +114,6 @@
           <Property Name="Desription" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <Association Name="FK_Bookings_Clients">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
           <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
@@ -247,6 +237,12 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spAvailableParkingPositionsWithStringParams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="varchar" Mode="In" />
+          <Parameter Name="endDate" Type="varchar" Mode="In" />
+          <Parameter Name="roomTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAvailableParkingsToday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spBookingDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spBookingInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="clientId" Type="int" Mode="In" />
@@ -296,7 +292,6 @@
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parkings" EntityType="Self.Parkings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ParkingTypes" EntityType="Self.ParkingTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Bookings_Clients" Association="Self.FK_Bookings_Clients">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Bookings" EntitySet="Bookings" />
@@ -495,25 +490,6 @@
           <FunctionImport Name="spParkingWithTypes" ReturnType="Collection(WebParkingDBModel.spParkingWithTypes_Result)" />
           <FunctionImport Name="spBookingDetails" ReturnType="Collection(WebParkingDBModel.spBookingDetails_Result)" />
           <FunctionImport Name="spParkingPositionsNotBooked" ReturnType="Collection(WebParkingDBModel.spParkingPositionsNotBooked_Result1)" />
-          <EntitySet Name="C__MigrationHistory" EntityType="WebParkingDBModel.C__MigrationHistory" />
-          <EntitySet Name="C__RefactorLog" EntityType="WebParkingDBModel.C__RefactorLog" />
-          <EntitySet Name="AspNetRoles" EntityType="WebParkingDBModel.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="WebParkingDBModel.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="WebParkingDBModel.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="WebParkingDBModel.AspNetUsers" />
-          <EntitySet Name="sysdiagrams" EntityType="WebParkingDBModel.sysdiagrams" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="WebParkingDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="WebParkingDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="WebParkingDBModel.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram1">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -549,6 +525,30 @@
           </FunctionImport>
           <FunctionImport Name="spBookingsNotBooked" ReturnType="Collection(WebParkingDBModel.spBookingsNotBooked_Result)" />
           <FunctionImport Name="spBookingsBooked" ReturnType="Collection(WebParkingDBModel.spBookingsBooked_Result)" />
+          <FunctionImport Name="spAvailableParkingPositionsWithStringParams" ReturnType="Collection(WebParkingDBModel.spAvailableParkingPositionsWithStringParams_Result)">
+            <Parameter Name="startDate" Mode="In" Type="String" />
+            <Parameter Name="endDate" Mode="In" Type="String" />
+            <Parameter Name="roomTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAvailableParkingsToday" ReturnType="Collection(WebParkingDBModel.spAvailableParkingsToday_Result)" />
+          <EntitySet Name="C__MigrationHistory" EntityType="WebParkingDBModel.C__MigrationHistory" />
+          <EntitySet Name="C__RefactorLog" EntityType="WebParkingDBModel.C__RefactorLog" />
+          <EntitySet Name="AspNetRoles" EntityType="WebParkingDBModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="WebParkingDBModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="WebParkingDBModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="WebParkingDBModel.AspNetUsers" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="WebParkingDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="WebParkingDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="WebParkingDBModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -642,6 +642,57 @@
           <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="ParkingTypeId" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition1_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams1_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spBookingsNotBooked_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="Int32" Name="ParkingId" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="CheckedIn" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Phone" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spBookingsBooked_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ClientId" Nullable="true" />
+          <Property Type="Int32" Name="ParkingId" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="CheckedIn" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Phone" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spAvailableParkingPositionsWithStringParams_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ParkingTypeId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spAvailableParkingsToday_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Desription" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" />
+          <Property Type="Int32" Name="remainingPositions" Nullable="true" />
+        </ComplexType>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -709,16 +760,6 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="WebParkingDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="WebParkingDBModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="WebParkingDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -751,45 +792,6 @@
           <End Type="WebParkingDBModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
           <End Type="WebParkingDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
-        <ComplexType Name="sp_helpdiagramdefinition1_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams1_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="spBookingsNotBooked_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="ClientId" Nullable="true" />
-          <Property Type="Int32" Name="ParkingId" Nullable="true" />
-          <Property Type="DateTime" Name="StartDate" Nullable="true" />
-          <Property Type="DateTime" Name="EndDate" Nullable="true" />
-          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
-          <Property Type="Boolean" Name="CheckedIn" Nullable="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Phone" Nullable="true" />
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="spBookingsBooked_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="ClientId" Nullable="true" />
-          <Property Type="Int32" Name="ParkingId" Nullable="true" />
-          <Property Type="DateTime" Name="StartDate" Nullable="true" />
-          <Property Type="DateTime" Name="EndDate" Nullable="true" />
-          <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="19" />
-          <Property Type="Boolean" Name="CheckedIn" Nullable="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="LatName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Phone" Nullable="true" />
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ParkingNumber" Nullable="false" MaxLength="50" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -944,6 +946,87 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="WebParkingDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="WebParkingDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="WebParkingDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="WebParkingDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.sp_helpdiagramdefinition1_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="WebParkingDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.sp_helpdiagrams1_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="WebParkingDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="WebParkingDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="spBookingsCheckOut" FunctionName="WebParkingDBModel.Store.spBookingsCheckOut" />
+          <FunctionImportMapping FunctionImportName="spBookingsNotBooked" FunctionName="WebParkingDBModel.Store.spBookingsNotBooked">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spBookingsNotBooked_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CheckedIn" ColumnName="CheckedIn" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LatName" ColumnName="LatName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spBookingsBooked" FunctionName="WebParkingDBModel.Store.spBookingsBooked">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spBookingsBooked_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CheckedIn" ColumnName="CheckedIn" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LatName" ColumnName="LatName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAvailableParkingPositionsWithStringParams" FunctionName="WebParkingDBModel.Store.spAvailableParkingPositionsWithStringParams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spAvailableParkingPositionsWithStringParams_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
+                <ScalarProperty Name="ParkingTypeId" ColumnName="ParkingTypeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAvailableParkingsToday" FunctionName="WebParkingDBModel.Store.spAvailableParkingsToday">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebParkingDBModel.spAvailableParkingsToday_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Desription" ColumnName="Desription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="remainingPositions" ColumnName="remainingPositions" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="WebParkingDBModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -1008,17 +1091,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="WebParkingDBModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="WebParkingDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetUsers">
               <ScalarProperty Name="Id" ColumnName="UserId" />
@@ -1027,67 +1099,6 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="WebParkingDBModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="WebParkingDBModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="WebParkingDBModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="WebParkingDBModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebParkingDBModel.sp_helpdiagramdefinition1_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="WebParkingDBModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebParkingDBModel.sp_helpdiagrams1_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="WebParkingDBModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="WebParkingDBModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="spBookingsCheckOut" FunctionName="WebParkingDBModel.Store.spBookingsCheckOut" />
-          <FunctionImportMapping FunctionImportName="spBookingsNotBooked" FunctionName="WebParkingDBModel.Store.spBookingsNotBooked">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebParkingDBModel.spBookingsNotBooked_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="CheckedIn" ColumnName="CheckedIn" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LatName" ColumnName="LatName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spBookingsBooked" FunctionName="WebParkingDBModel.Store.spBookingsBooked">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="WebParkingDBModel.spBookingsBooked_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="ParkingId" ColumnName="ParkingId" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="CheckedIn" ColumnName="CheckedIn" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LatName" ColumnName="LatName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ParkingNumber" ColumnName="ParkingNumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

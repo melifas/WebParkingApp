@@ -11,20 +11,16 @@ namespace WebParkingMVC.Controllers
     public class BookingApiController : ApiController
     {
         // GET: api/BookingApi
-        //[Route("api/bookings/{start:DateTime}/{end:DateTime}/{ParkingTypeId:int}")]
-        //[HttpGet]
-        /*public List<spGetAvailableParkingPositions_Result> Get(DateTime start, DateTime end, int ParkingTypeId)
+        public IEnumerable<spAvailableParkingsToday_Result> Get()
         {
-            using (WebParkingDBContex db = new WebParkingDBContex())
+            using (WebParkingDBContex db =new WebParkingDBContex() )
             {
-                return db.spGetAvailableParkingPositions(start, end, ParkingTypeId).ToList();
-            }
-        }*/
+                return db.spAvailableParkingsToday().ToList();
+            }            
+        }
 
         // GET: api/BookingApi/5
-        //[Route("api/book")]
-        //[HttpGet]
-        public string Get()
+        public string Get(int id)
         {
             return "value";
         }
