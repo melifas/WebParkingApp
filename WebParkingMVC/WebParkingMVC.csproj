@@ -194,6 +194,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
+    <Compile Include="Migrations\202005051628131_InitialCreate.cs" />
+    <Compile Include="Migrations\202005051628131_InitialCreate.designer.cs">
+      <DependentUpon>202005051628131_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005051653405_addfullname.cs" />
+    <Compile Include="Migrations\202005051653405_addfullname.designer.cs">
+      <DependentUpon>202005051653405_addfullname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookRoomModel.cs" />
     <Compile Include="Models\FullBookRoomModel.cs" />
@@ -1900,6 +1909,14 @@
       <Project>{088ad1c9-ba4f-4e9e-b4ec-9bb64ea209e6}</Project>
       <Name>LibraryWebParking</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005051628131_InitialCreate.resx">
+      <DependentUpon>202005051628131_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005051653405_addfullname.resx">
+      <DependentUpon>202005051653405_addfullname.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

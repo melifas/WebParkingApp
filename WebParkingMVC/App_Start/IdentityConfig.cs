@@ -45,7 +45,7 @@ namespace WebParkingMVC
            // SmtpSection smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
             //MailAddress from = new MailAddress(smtpSection.From);
 
-            MailMessage msg = new MailMessage();
+            /*MailMessage msg = new MailMessage();
             msg.From = new MailAddress(ConfigurationManager.AppSettings["Email"].ToString());
             msg.To.Add(new MailAddress(message.Destination));
             msg.Subject = message.Subject;
@@ -56,7 +56,7 @@ namespace WebParkingMVC
             System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["Email"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
             smtpClient.Credentials = credentials;
             smtpClient.EnableSsl = false;
-            smtpClient.Send(msg);
+            smtpClient.Send(msg);*/
         }
 
     }
