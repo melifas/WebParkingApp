@@ -46,13 +46,12 @@ namespace WebParkingMVC
 
             var blobServiceClient = new BlobServiceClient(connectionString);
             var staticContentContainer = blobServiceClient.GetBlobContainerClient(containerName);
-           
 
             //Create the container with public access permissions on the blobs in those containers
             staticContentContainer.CreateIfNotExists(PublicAccessType.Blob);
 
-            // Αυτό διαγράφει το blob container αν υπάρχει ηδη. Χωρίς αυτό χτυπάει Exception
-            try
+            //Αυτό διαγράφει το blob container αν υπάρχει ηδη. Χωρίς αυτό χτυπάει Exception
+           /* try
             {
                 staticContentContainer.DeleteIfExists();
             }
@@ -60,11 +59,13 @@ namespace WebParkingMVC
             {
                 Trace.TraceError("Delete Failed {0}", ex.Message);
                 throw;
-            }
+            }*/
 
 
             //Upload Images folder
             UploadFolder("Images", staticContentContainer);
+
+            UploadFolder("Images/landing", staticContentContainer);
 
             //Upload Scripts folder
             UploadFolder("Scripts", staticContentContainer);
