@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "myconnectionsql",
+      "secretStore": "LocalSecretsFile"
+    },
+    "storage1": {
+      "resourceId": null,
+      "type": "storage.emulator",
+      "connectionId": "myconnection",
+      "secretStore": null
+    }
+  }
+}

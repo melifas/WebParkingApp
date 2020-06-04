@@ -38,16 +38,9 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="StaticContentHosting.WebContent\" />
     <Folder Include="WebParkingMVCContent\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="StaticContentHosting.WebContent\diagnostics.wadcfg">
-      <SubType>Content</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <DiagnosticsConfiguration Include="StaticContentHosting.WebContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="WebParkingMVCContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <ItemGroup>
