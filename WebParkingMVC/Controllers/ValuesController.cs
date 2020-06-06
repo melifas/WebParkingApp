@@ -12,6 +12,7 @@ using Azure.Storage.Sas;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using System.Configuration;
+using static WebParkingMVC.Controllers.HomeController;
 
 namespace WebParkingMVC.Controllers
 {
@@ -37,7 +38,7 @@ namespace WebParkingMVC.Controllers
                 // Retrieve a shared access signature of the location we should upload this file to
                 var blobSas = this.GetSharedAccessReferenceForUpload(blobName.ToString());
                 Trace.WriteLine(string.Format("Blob Uri: {0} - Shared Access Signature: {1}", blobSas.BlobUri, blobSas.Credentials));
-
+                Debug.WriteLine(string.Format("Valet : Created new Blob Uri : {0} - Shared Access signature {1}", blobSas.BlobUri, blobSas.Credentials));
                 return blobSas;
             }
             catch (Exception ex)
