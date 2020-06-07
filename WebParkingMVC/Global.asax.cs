@@ -65,7 +65,7 @@ namespace WebParkingMVC
             //Upload Images folder
             UploadFolder("Images", staticContentContainer);
 
-            UploadFolder("Images/landing", staticContentContainer);
+            //UploadFolder("Images/landing", staticContentContainer);
 
             //Upload Scripts folder
             UploadFolder("Scripts", staticContentContainer);
