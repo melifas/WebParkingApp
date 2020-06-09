@@ -25,6 +25,11 @@ namespace WebParkingMVC.Controllers
             return View();
         }
 
+        public ActionResult Test()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -118,5 +123,7 @@ namespace WebParkingMVC.Controllers
             public Uri BlobUri;
             public string Name;
         }
+
+
     }
 }
