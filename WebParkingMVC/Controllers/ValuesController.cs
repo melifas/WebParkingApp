@@ -25,9 +25,16 @@ namespace WebParkingMVC.Controllers
         {
             this.blobServiceClient = new BlobServiceClient(CloudConfigurationManager.GetSetting("Storage"));
             this.blobContainer = ConfigurationManager.AppSettings["ContainerName"];
+
+            /* string connectionString = Settings.StaticContentStorageConnectionString;
+             string containerName = Settings.StaticContentContainer;
+
+             //var blobServiceClient = new BlobServiceClient(connectionString);
+             var staticContentContainer = blobServiceClient.GetBlobContainerClient(containerName);*/
         }
 
         // GET api/Values
+        [Route("api/Values")]
         public StorageEntitySas Get()
         {
             try
@@ -79,10 +86,17 @@ namespace WebParkingMVC.Controllers
                 Credentials = sas
             };
         }
-       /* public struct StorageEntitySas
+        /* public struct StorageEntitySas
+         {
+             public string Credentials;
+             public Uri BlobUri;
+         }*/
+
+        public struct StorageEntitySas
         {
             public string Credentials;
             public Uri BlobUri;
-        }*/
+            public string Name;
+        }
     }
 }

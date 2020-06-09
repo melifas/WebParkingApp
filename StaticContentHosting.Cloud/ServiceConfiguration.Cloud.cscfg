@@ -6,6 +6,7 @@
       <Setting name="StaticContent.StorageConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="StaticContent.Container" value="static-content" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Storage" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
