@@ -6,8 +6,21 @@
 
 <h2>Test</h2>
 
-<form method="get" action="/Home/AddBlob" >
+<form method="get" action="/Home/AddBlob">
     <input type="text" name="text" />
     <input type="submit" value="submit" />
 </form>
+
+
+
+@using (Html.BeginForm(
+        "GetBlob", "Home",
+        new {  id = "eb37e2db-8afa-4c85-86c1-0ab4d161188c" },
+        FormMethod.Get,
+        new { enctype = "multipart/form-data" }))
+{
+   
+
+    <input type="submit" name="submit" value="Submit" />
+}
 
