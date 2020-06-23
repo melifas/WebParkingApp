@@ -14,10 +14,45 @@ using System.Web;
 using System.Web.Mvc;
 using static WebParkingMVC.Controllers.ValuesController;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Configuration;
+using System.Diagnostics;
+using Azure.Storage;
+using Azure.Storage.Blobs;
+using Azure.Storage.Sas;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using System.Configuration;
+using static WebParkingMVC.Controllers.HomeController;
+using Microsoft.Azure.Storage;
+using Microsoft.Ajax.Utilities;
+
 namespace WebParkingMVC.Controllers
 {
     public class HomeController : Controller
     {
+        CloudStorageAccount account;
+        //CloudBlobClient client;*/
+
+        private readonly BlobServiceClient blobServiceClient;
+        private readonly string blobContainer;
+        public HomeController()
+        {
+            var connString = CloudConfigurationManager.GetSetting("Storage");
+            account = CloudStorageAccount.Parse(connString);
+
+            /* client = account.CreateCloudBlobClient();
+            _container = _client.GetContainerReference(CONTAINER_NAME);*/
+
+
+                this.blobServiceClient = new BlobServiceClient(CloudConfigurationManager.GetSetting("Storage"));
+                this.blobContainer = ConfigurationManager.AppSettings["ContainerName"];
+        }
 
         Data_Access da = new Data_Access();
         public ActionResult Index()
@@ -52,7 +87,7 @@ namespace WebParkingMVC.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult AvailableParkingTypes(DateTime startDate, DateTime endDate)
         {
             ViewBag.startDate = startDate;
@@ -102,6 +137,52 @@ namespace WebParkingMVC.Controllers
 
                 throw;
             }
+        }
+
+        public async Task<ActionResult> RedirectTest(string id)
+        {
+            try
+            {
+                Debug.WriteLine(" Valet : Got request for data with id : " + id);
+                var blobclient = this.account.CreateCloudBlobClient();
+                var container = blobclient.GetContainerReference(this.blobContainer);
+                var blob = container.GetBlockBlobReference(id);
+
+                if (!await blob.ExistsAsync())
+                {
+                    throw new Exception("Blob Does not Exist");
+                }
+
+                var policy = new SharedAccessBlobPolicy
+                {
+                    Permissions = SharedAccessBlobPermissions.Read,
+                    // Create a signature fro 5 min
+                    SharedAccessStartTime = DateTime.UtcNow.AddMinutes(-5),
+
+                    //Create signature as long as we can
+                    SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(5)
+
+                };
+
+                var sas = blob.GetSharedAccessSignature(policy);
+                var blobSas = new StorageEntitySas
+                {
+                    BlobUri = blob.Uri,
+                    Credentials = sas
+                };
+
+                Debug.WriteLine(string.Format("Valet Redirecting to {0}{1}", blobSas.BlobUri, blobSas.Credentials));
+
+                return this.Redirect(string.Format("{0}{1}", blobSas.BlobUri, blobSas.Credentials));
+            }
+            catch (Exception ex)
+            {
+
+                var message = "Error " + ex.Message;
+                Trace.TraceError(message);
+                return this.View("Error");
+            }
+            
         }
         
 
