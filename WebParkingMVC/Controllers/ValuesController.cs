@@ -86,11 +86,8 @@ namespace WebParkingMVC.Controllers
                 Credentials = sas
             };
         }
-        /* public struct StorageEntitySas
-         {
-             public string Credentials;
-             public Uri BlobUri;
-         }*/
+        
+
 
         public struct StorageEntitySas
         {
