@@ -122,6 +122,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Repository\RepositoryClassDiagramm.cd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
